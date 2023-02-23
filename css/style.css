@@ -1,0 +1,57 @@
+body{
+    background-image: url(../media/img/SAFARI\ SQUAD\ fondo.png);
+    background-position: 40% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-image: linear-gradient(to right top, #051937, #004864, #017b80, #66ad8c, #c6da99);*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*Variables de los colores*/
+:root{
+    --blue : #0d4f9b42;
+    --pink : #EC00B8;
+    --magenta : #FF0071;
+    --orange : #FF683E;
+    --oranche-yellow : #FFBB33;
+    --yellow : #F9F871;
+    --red : #dd000023;
+} 
+.header{
+    background-color: var(--blue);
+    border-radius: 6px;
+    
+    width: 100vh;
+    margin-bottom: 15px;
+    color: #fff;
+}
+.sec{
+    background-color: var(--red);
+    border-radius: 6px;
+    height: 80vh;
+    width: 90vh;
+    
+}
+.footer{
+    background-color: var(--blue);
+    border-radius: 6px;
+    height: 10vh;
+    width: 100vh;
+    margin-top: 15px;
+    color: #fff;
+}
+.width{
+    width: 100vh;
+}
+.TOTAL{
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.img-logo{
+    border-radius: 10px;
+}
