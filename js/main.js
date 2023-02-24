@@ -4,14 +4,19 @@ class animal {
     ctx;
     width;
     height;
-    constructor(name,ctx,width,height){
-      this.ctx = ctx;
-      this.width = width;
-      this.height = height;
-      this.name = name;
-      console.log(`${this.name}`)
-      
+    constructor(name, ctx, width, height) {
+        this.ctx = ctx;
+        this.width = width;
+        this.height = height;
+        this.name = name;
+        console.log(`${this.name}`)
+
     }
-  }
-  
-const Leon = new animal('leon',00,0,0);
+}
+class User{
+    Alias
+    score
+    
+}
+
+const Leon = new animal('leon', 00, 0, 0);
