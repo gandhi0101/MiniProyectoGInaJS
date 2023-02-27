@@ -83,6 +83,10 @@ class Fondo extends ElementoJuego {
     dibujaFondo() {
         super.draw();
     }
+    clear() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // borrar la imagen del botón
+
+    }
 }
 
 class Botones extends ElementoJuego {
@@ -114,7 +118,8 @@ class Botones extends ElementoJuego {
                 canvas.removeEventListener('click', event);
                 var audio = new Audio(urlAudio);
                 audio.play();
-                window.location.replace("../game.html");
+                window.location.replace("../");
+
             }
         });
     }
@@ -122,19 +127,73 @@ class Botones extends ElementoJuego {
 }
 
 
+class Animal extends ElementoJuego {
+    name;
+    sound;
 
+    constructor(img, name, x, y, width, height) {
+        super(x, y, width, height, img);
+        this.name = name;
+        console.log(this.name);
+    }
+
+    draw() {
+        super.draw();
+
+    }
+    cuadro(color) {
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y - 20, this.width, this.height);
+    }
+}
+class NombresAnimale extends Animal {
+
+    constructor(color, name, x, y) {
+        super(color, name, x, y, (cavas.width / 6) - 5, 50)
+    }
+    arrastrar() {
+        //if()
+    }
+    soltar() {
+
+    }
+}
 const persona = new User;
-
-const inicio = new Fondo("../media/assets/Pantalla-presentacion/fondo-presentacion.png", 0, 0, 'mi-canvas');
-const empezar = new Botones('', 400, 300, 300, 150, "../media/assets/Pantalla-presentacion/boton-inicio.png")
+const play = new Fondo("../media/assets/Pantalla-principal/fondo-principal.png", 0, 0, "game");
+const exit = new Botones('', 150, 75, 300, 150, "../media/assets/assets/exit.png")
 //
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
-inicio.dibujaFondo();
+paly.dibujaFondo();
 setTimeout(function () {
     empezar.dibujarImg();
+    // Leon.draw();
 }, 150);
+// intentando borrar el fondo y colocar uno nuevo
+exit.botonPresionado('../media/sounds/hasta_luegor.mp3')
 
-empezar.botonPresionado('../media/sounds/vamos_a_empezar.mp3')
+
+
+play.dibujaFondo();
+console.log(band);
+const Leon = new Animal("../media/img/Leon.png", "Leon", random(600), random(400), 300, 200);
+const Mono = new Animal("../media/assets/Pantalla-principal/chango.pmg", "Mono", random(600), random(400), 300, 200);
+const Elefante = new Animal("../media/assets/Pantalla-principal/elefante.png", "Elefante", random(600), random(400), 300, 200);
+const AnimaldeJuan = new Animal("../media/assets/Pantalla-principal/zebra.png", "Animal de juan", random(600), random(400), 300, 200);
+const AnimaldeJuan2 = new Animal("../media/assets/Pantalla-principal/hipopotamo.png", "Animal de juan2", random(600), random(400), 300, 200);
+const AnimaldeJuan3 = new Animal("../media/img/Rinoceronte.png", "Animal de juan3", random(600), random(400), 300, 200);
+
+setTimeout(function () {
+    Leon.draw();
+    Mono.draw();
+    Elefante.draw();
+    AnimaldeJuan.draw();
+    AnimaldeJuan2.draw();
+    AnimaldeJuan3.draw();
+}, 150)
+
+function random(max) {
+    return Math.floor(Math.random() * max)
+}

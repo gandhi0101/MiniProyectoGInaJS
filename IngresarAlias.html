@@ -10,44 +10,36 @@
         <!--Stylesheets-->
         <link rel="stylesheet" href="css/style.css">
         <!-- Scripts -->
+        <script src="js/main.js"></script>
     </head>
     <body>
+        <audio src="media/sounds/spring-upbeat-133219.mp3" autoplay="autoplay"
+            loop="loop"></audio>
+
         <header class="TOTAL">
             <div class="header center-logo">
                 <div id="logo">
                     <img src="media/img/UAAGAMES.png" class="img-logo"
                         alt="Logo" style="width: 100px; height: auto;">
                 </div>
-
                 <li>
                     <ul>
-                        <a href="#" class="btn-Menu">Juego</a>
+                        <a href="#"></a>
                     </ul>
                     <ul>
-                        <a href="#" class="btn-Menu">Creditos</a>
+                        <a href="#"></a>
                     </ul>
                     <ul>
-                        <a href="#" class="btn-Menu">High Score</a>
+                        <a href="#"></a>
                     </ul>
                 </li>
-                <div class="music">
-                    <!--<audio id="miAudio"
-                        src="media/sounds/spring-upbeat-133219.mp3"
-                        autoplay="autoplay"
-                        loop="loop"></audio>-->
-                    <h3>🔊</h3>
-
-                    <input type="range" id="volumen" min="0" max="1" step="0.1"
-                        value="1"
-                        onchange="cambiarVolumen()">
-                    <button id="btnMusica" onclick="pausar()">&#10074;&#10074;</button>
-                </div>
             </div>
         </header>
         <section class="TOTAL">
             <div class="sec">
-                <canvas id="mi-canvas"></canvas>
-                <div id="imgs"></div>
+                soy registrar alias
+                <input type="text" id="inputAlias" placeholder="Alias">
+                <button onclick="persona.ingresaAlias()">Ingresa</button>
             </div>
         </section>
         <footer class="TOTAL">
@@ -56,6 +48,4 @@
             </div>
         </footer>
     </body>
-    <script src="js/main.js"></script>
-
 </html>

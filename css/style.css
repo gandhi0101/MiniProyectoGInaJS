@@ -30,13 +30,19 @@ body{
 .sec{
     background-color: var(--red);
     border-radius: 6px;
-    height: 80vh;
+    /*height: 80vh;*/
     width: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 .footer{
+    position: fixed;
+    bottom: 0;
+    left: 1;
     background-color: var(--blue);
-    border-radius: 6px;
+    /*border-radius: 6px;*/
     height: 10vh;
     width: 100vh;
     margin-top: 15px;
@@ -57,4 +63,38 @@ body{
     justify-content: center;
     align-items: center;
     
+}
+.header li{
+    list-style-type: none;
+    display: flex;
+}
+.header li ul a{
+    text-decoration: none;
+    color: #fff;
+    background-color: #EC00B8;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 15px black ;
+    transition: transform 0.2s ease-in-out;
+}
+.header li ul a:hover {
+    transform: scale(1.1);
+}
+
+.music{
+    margin: 0 20px;
+    display: flex;
+}
+.music button{
+    color: #fff;
+    background-color: #ec00b994;
+    border: 0px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px black;
+    padding: 0 20px 0 20px;
+    transition: transform 0.1s ease-in-out;
+}
+.music button:hover {
+    transform: scale(1.1);
+    background-color: #ec00b9e1;
 }

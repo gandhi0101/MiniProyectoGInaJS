@@ -4,31 +4,58 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mini proyecto Gina</title>
+        <title>SAFARI SQUAD</title>
         <!--Favicon-->
-        <link rel="shortcut icon" href="media/img/favicon.ico" type="image/x-icon">
-
+        <link rel="shortcut icon" href="media/img/favicon.png" type="image/">
         <!--Stylesheets-->
         <link rel="stylesheet" href="css/style.css">
         <!-- Scripts -->
-        <script src="js/main.js"></script>
     </head>
-    <body style="background-image: linear-gradient(to right top, #051937,
-        #004864, #017b80, #66ad8c, #c6da99);background-size: cover;">
-        <header>
-            <div class="header">
+    <body>
+        <header class="TOTAL">
+            <div class="header center-logo">
+                <div id="logo">
+                    <img src="media/img/UAAGAMES.png" class="img-logo"
+                        alt="Logo" style="width: 100px; height: auto;">
+                </div>
 
+                <li>
+                    <ul>
+                        <a href="#" class="btn-Menu">Juego</a>
+                    </ul>
+                    <ul>
+                        <a href="#" class="btn-Menu">Creditos</a>
+                    </ul>
+                    <ul>
+                        <a href="#" class="btn-Menu">High Score</a>
+                    </ul>
+                </li>
+                <div class="music">
+                    <!--<audio id="miAudio"
+                        src="media/sounds/spring-upbeat-133219.mp3"
+                        autoplay="autoplay"
+                        loop="loop"></audio>-->
+                    <h3>🔊</h3>
+
+                    <input type="range" id="volumen" min="0" max="1" step="0.1"
+                        value="1"
+                        onchange="cambiarVolumen()">
+                    <button id="btnMusica" onclick="pausar()">&#10074;&#10074;</button>
+                </div>
             </div>
         </header>
-        <section>
+        <section class="TOTAL">
             <div class="sec">
-
+                <canvas id="game"></canvas>
+                <div id="imgs"></div>
             </div>
         </section>
-        <footer>
+        <footer class="TOTAL">
             <div class="footer">
-
+                y footer
             </div>
         </footer>
     </body>
+    <script src="js/game.js"></script>
+
 </html>
