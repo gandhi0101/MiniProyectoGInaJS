@@ -1,6 +1,5 @@
 canvas = [];
 ctx = [];
-var band = false;
 
 class User {
     #alias;
@@ -73,11 +72,11 @@ class ElementoJuego {
 
 class Fondo extends ElementoJuego {
     constructor(img, x, y, idCanvas) {
-        super(x, y, 800, 600, img);
+        super(x, y, 3840 / 3, 2160 / 3, img);
         canvas = document.getElementById(idCanvas);
         ctx = canvas.getContext('2d');
-        canvas.width = 800;
-        canvas.height = 600;
+        canvas.width = 3840 / 3;
+        canvas.height = 2160 / 3;
     }
 
     dibujaFondo() {
@@ -158,42 +157,70 @@ class NombresAnimale extends Animal {
 
     }
 }
+
 const persona = new User;
+
 const play = new Fondo("../media/assets/Pantalla-principal/fondo-principal.png", 0, 0, "game");
-const exit = new Botones('', 150, 75, 300, 150, "../media/assets/assets/exit.png")
+const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
 //
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
-paly.dibujaFondo();
-setTimeout(function () {
-    empezar.dibujarImg();
-    // Leon.draw();
-}, 150);
-// intentando borrar el fondo y colocar uno nuevo
-exit.botonPresionado('../media/sounds/hasta_luegor.mp3')
-
-
-
 play.dibujaFondo();
-console.log(band);
-const Leon = new Animal("../media/img/Leon.png", "Leon", random(600), random(400), 300, 200);
-const Mono = new Animal("../media/assets/Pantalla-principal/chango.pmg", "Mono", random(600), random(400), 300, 200);
-const Elefante = new Animal("../media/assets/Pantalla-principal/elefante.png", "Elefante", random(600), random(400), 300, 200);
-const AnimaldeJuan = new Animal("../media/assets/Pantalla-principal/zebra.png", "Animal de juan", random(600), random(400), 300, 200);
-const AnimaldeJuan2 = new Animal("../media/assets/Pantalla-principal/hipopotamo.png", "Animal de juan2", random(600), random(400), 300, 200);
-const AnimaldeJuan3 = new Animal("../media/img/Rinoceronte.png", "Animal de juan3", random(600), random(400), 300, 200);
-
+rand = randomPosition();
+const Leon = new Animal("../media/img/Leon.png", "Leon", rand[0].x, rand[0].y, 300, 200);
+const Mono = new Animal("../media/assets/Pantalla-principal/chango.png", "Mono", rand[1].x, rand[1].y, 300, 200);
+const Elefante = new Animal("../media/assets/Pantalla-principal/elefante.png", "Elefante", rand[2].x, rand[2].y, 300, 200);
+const AnimaldeJuan = new Animal("../media/assets/Pantalla-principal/zebra.png", "Animal de juan", rand[3].x, rand[3].y, 300, 200);
+const AnimaldeJuan2 = new Animal("../media/assets/Pantalla-principal/hipopotamo.png", "Animal de juan2", rand[4].x, rand[4].y, 300, 200);
+const AnimaldeJuan3 = new Animal("../media/img/Rinoceronte.png", "Animal de juan3", rand[5].x, rand[5].y, 300, 200);
+console.log(rand);
+console.log(rand[3].y)
 setTimeout(function () {
+    exit.dibujarImg();
     Leon.draw();
     Mono.draw();
     Elefante.draw();
     AnimaldeJuan.draw();
     AnimaldeJuan2.draw();
     AnimaldeJuan3.draw();
+    exit.botonPresionado('../media/sounds/hasta_luegor.mp3')
 }, 150)
 
-function random(max) {
-    return Math.floor(Math.random() * max)
-}
+function randomPosition() {
+    const positions = [
+      { x: 0, y: 200 },
+      { x: 250, y: 200 },
+      { x: 500, y: 200 },
+      { x: 750, y: 200 },
+      { x: 1000, y: 200 },
+      { x: 0, y: 500 },
+      { x: 250, y: 500 },
+      { x: 500, y: 500 },
+      { x: 750, y: 500 },
+      { x: 1000, y: 500 },
+    ];
+  
+    const randomPositions = [];
+    const takenIndexes = [];
+  
+    for (let i = 0; i < 6; i++) {
+      let randomIndex;
+      do {
+        randomIndex = random(10);
+      } while (takenIndexes.includes(randomIndex));
+      takenIndexes.push(randomIndex);
+      randomPositions.push(positions[randomIndex]);
+    }
+  
+    return randomPositions;
+  }
+  
+  function random(max) {
+    return Math.floor(Math.random() * max);
+  }
+  
+  const orderedPositions = randomPosition();
+  console.log(orderedPositions);
+  
