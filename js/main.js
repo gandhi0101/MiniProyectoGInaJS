@@ -32,13 +32,30 @@ class User {
     ingresaAlias = function () {
         localStorage.removeItem('hasRedirected');
         const inputAlias = document.getElementById('inputAlias');
-        localStorage.setItem('alias', inputAlias.value);
-        localStorage.setItem('score', 0);
-        console.log(inputAlias.value)
+        const alias = inputAlias.value;
+        const score = 0;
+
+        // Obtener el objeto JSON actual del localStorage
+        let usuariosJSON = localStorage.getItem('usuarios');
+        let usuarios = [];
+
+        // Si ya existe un objeto JSON en el localStorage, convertirlo en un objeto JavaScript
+        if (usuariosJSON) {
+            usuarios = JSON.parse(usuariosJSON);
+        }
+
+        // Agregar el nuevo alias y score al objeto JavaScript
+        usuarios.push({ alias, score });
+
+        // Convertir el objeto JavaScript en un objeto JSON y guardarlo en el localStorage
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+        console.log(alias);
+
         let hasRedirected = localStorage.getItem('hasRedirected');
         if (!hasRedirected) {
             localStorage.setItem('hasRedirected2', true);
-            window.location.replace('../Score.html');
+            window.location.replace('../');
         }
     }
     saluda() {

@@ -4,6 +4,7 @@ ctx = [];
 class User {
     #alias;
     #score;
+    usuarios;
 
     constructor() {
         localStorage.removeItem('hasRedirected2');
@@ -31,18 +32,41 @@ class User {
     ingresaAlias = function () {
         localStorage.removeItem('hasRedirected');
         const inputAlias = document.getElementById('inputAlias');
-        localStorage.setItem('alias', inputAlias.value);
-        localStorage.setItem('score', 0);
-        console.log(inputAlias.value)
+        const alias = inputAlias.value;
+        const score = 0;
+
+        // Obtener el objeto JSON actual del localStorage
+        let usuariosJSON = localStorage.getItem('usuarios');
+        let usuarios = [];
+
+        // Si ya existe un objeto JSON en el localStorage, convertirlo en un objeto JavaScript
+        if (usuariosJSON) {
+            usuarios = JSON.parse(usuariosJSON);
+        }
+
+        // Agregar el nuevo alias y score al objeto JavaScript
+        usuarios.push({ alias, score });
+
+        // Convertir el objeto JavaScript en un objeto JSON y guardarlo en el localStorage
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+        console.log(alias);
+
         let hasRedirected = localStorage.getItem('hasRedirected');
         if (!hasRedirected) {
             localStorage.setItem('hasRedirected2', true);
-            window.location.replace('../Score.html');
+            window.location.replace('../');
         }
     }
+
     saluda() {
 
     }
+    EliminarAlias() {
+        localStorage.removeItem('alias');
+        localStorage.removeItem('score');
+    }
+
 }
 class ElementoJuego {
     x;
@@ -179,21 +203,21 @@ class NombresAnimales extends ElementoJuego {
     soltar() {
 
     }
-    CuadroTexto(x,y,) {
-        let width=150;
-        let height=70;
-        
+    CuadroTexto(x, y,) {
+        let width = 150;
+        let height = 70;
+
 
         var radius = 20;
 
         ctx.beginPath();
         ctx.moveTo(x + radius, y);
-        ctx.lineTo(x +width - radius,y);
-        ctx.arcTo(x +width, y, x +width, y + radius, radius);
-        ctx.lineTo(x +width, y +height - radius);
-        ctx.arcTo(x +width, y +height, x +width - radius, y +height, radius);
-        ctx.lineTo(x + radius, y +height);
-        ctx.arcTo(x, y +height, x, y +height - radius, radius);
+        ctx.lineTo(x + width - radius, y);
+        ctx.arcTo(x + width, y, x + width, y + radius, radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
+        ctx.lineTo(x + radius, y + height);
+        ctx.arcTo(x, y + height, x, y + height - radius, radius);
         ctx.lineTo(x, y + radius);
         ctx.arcTo(x, y, x + radius, y, radius);
 
@@ -252,8 +276,9 @@ setTimeout(function () {
         animals[i].draw();
         nombresAnimales[i].Cuadro();
         console.log(i)
-        nombresAnimales[i].CuadroTexto(180*(i+1),10,)
+        nombresAnimales[i].CuadroTexto(180 * (i + 1), 10,)
     }
+
     exit.botonPresionado('../media/sounds/hasta_luegor.mp3', '../')
 
 
