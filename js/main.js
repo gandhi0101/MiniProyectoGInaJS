@@ -104,7 +104,7 @@ class Botones extends ElementoJuego {
         ctx.fillRect(100, 70, 130, 50);
     }
 
-    botonPresionado(urlAudio) {
+    botonPresionado(urlAudio,urlDireccion) {
         const self = this;
 
         canvas.addEventListener('click', function (event) {
@@ -114,7 +114,8 @@ class Botones extends ElementoJuego {
                 canvas.removeEventListener('click', event);
                 var audio = new Audio(urlAudio);
                 audio.play();
-                window.location.replace("../game.html");
+
+                window.location.replace(urlDireccion);
             }
         });
     }
@@ -137,4 +138,4 @@ setTimeout(function () {
     empezar.dibujarImg();
 }, 150);
 
-empezar.botonPresionado('../media/sounds/vamos_a_empezar.mp3')
+empezar.botonPresionado('../media/sounds/vamos_a_empezar.mp3',"../game.html")

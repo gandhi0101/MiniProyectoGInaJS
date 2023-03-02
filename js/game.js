@@ -68,6 +68,7 @@ class ElementoJuego {
             ctx.drawImage(imgElemento, self.x, self.y, self.width, self.height);
         }
     }
+
 }
 
 class Fondo extends ElementoJuego {
@@ -107,7 +108,7 @@ class Botones extends ElementoJuego {
         ctx.fillRect(100, 70, 130, 50);
     }
 
-    botonPresionado(urlAudio) {
+    botonPresionado(urlAudio, urlDireccion) {
         const self = this;
 
         canvas.addEventListener('click', function (event) {
@@ -117,7 +118,7 @@ class Botones extends ElementoJuego {
                 canvas.removeEventListener('click', event);
                 var audio = new Audio(urlAudio);
                 audio.play();
-                window.location.replace("../");
+                window.location.replace(urlDireccion);
 
             }
         });
@@ -145,17 +146,64 @@ class Animal extends ElementoJuego {
         ctx.fillRect(this.x, this.y - 20, this.width, this.height);
     }
 }
-class NombresAnimale extends Animal {
+class NombresAnimales extends ElementoJuego {
 
     constructor(color, name, x, y) {
-        super(color, name, x, y, (cavas.width / 6) - 5, 50)
+        super(x + 60, y - 60, ((canvas.width - 100) / 6) - 10, 60, color,)
+        this.name = name;
     }
+    Cuadro() {
+        /*ctx.fillStyle = this.img;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillText("hola guapos", this.x + 5, this.y + 5);*/
+        var radius = 20;
+
+        ctx.beginPath();
+        ctx.moveTo(this.x + radius, this.y);
+        ctx.lineTo(this.x + this.width - radius, this.y);
+        ctx.arcTo(this.x + this.width, this.y, this.x + this.width, this.y + radius, radius);
+        ctx.lineTo(this.x + this.width, this.y + this.height - radius);
+        ctx.arcTo(this.x + this.width, this.y + this.height, this.x + this.width - radius, this.y + this.height, radius);
+        ctx.lineTo(this.x + radius, this.y + this.height);
+        ctx.arcTo(this.x, this.y + this.height, this.x, this.y + this.height - radius, radius);
+        ctx.lineTo(this.x, this.y + radius);
+        ctx.arcTo(this.x, this.y, this.x + radius, this.y, radius);
+
+        ctx.fillStyle = this.img;
+        ctx.fill();
+    }
+
     arrastrar() {
         //if()
     }
     soltar() {
 
     }
+    CuadroTexto(x,y,) {
+        let width=150;
+        let height=70;
+        
+
+        var radius = 20;
+
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x +width - radius,y);
+        ctx.arcTo(x +width, y, x +width, y + radius, radius);
+        ctx.lineTo(x +width, y +height - radius);
+        ctx.arcTo(x +width, y +height, x +width - radius, y +height, radius);
+        ctx.lineTo(x + radius, y +height);
+        ctx.arcTo(x, y +height, x, y +height - radius, radius);
+        ctx.lineTo(x, y + radius);
+        ctx.arcTo(x, y, x + radius, y, radius);
+
+        ctx.fillStyle = this.img;
+        ctx.fill();
+        ctx.fillStyle = 'black';
+        ctx.font = '15px sans-serif';
+        ctx.fillText(this.name, x + 10, y + 25);
+    }
+
 }
 
 const persona = new User;
@@ -169,58 +217,84 @@ const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-princip
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 play.dibujaFondo();
 rand = randomPosition();
-const Leon = new Animal("../media/img/Leon.png", "Leon", rand[0].x, rand[0].y, 300, 200);
-const Mono = new Animal("../media/assets/Pantalla-principal/chango.png", "Mono", rand[1].x, rand[1].y, 300, 200);
-const Elefante = new Animal("../media/assets/Pantalla-principal/elefante.png", "Elefante", rand[2].x, rand[2].y, 300, 200);
-const AnimaldeJuan = new Animal("../media/assets/Pantalla-principal/zebra.png", "Animal de juan", rand[3].x, rand[3].y, 300, 200);
-const AnimaldeJuan2 = new Animal("../media/assets/Pantalla-principal/hipopotamo.png", "Animal de juan2", rand[4].x, rand[4].y, 300, 200);
-const AnimaldeJuan3 = new Animal("../media/img/Rinoceronte.png", "Animal de juan3", rand[5].x, rand[5].y, 300, 200);
-console.log(rand);
-console.log(rand[3].y)
+
+const animalData = [
+    { src: "../media/img/Leon.png", name: "Leon" },
+    { src: "../media/assets/Pantalla-principal/chango.png", name: "Mono" },
+    { src: "../media/assets/Pantalla-principal/elefante.png", name: "Elefante" },
+    { src: "../media/assets/Pantalla-principal/zebra.png", name: "Zebra" },
+    { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo" },
+    { src: "../media/img/Rinoceronte.png", name: "Rinoceronte" },
+];
+const nombresAnimales = [];
+const animals = [];
+for (let i = 0; i < animalData.length; i++) {
+    const animal = new Animal(
+        animalData[i].src,
+        animalData[i].name,
+        rand[i].x,
+        rand[i].y,
+        300,
+        200
+    );
+
+    nombreAnimal = new NombresAnimales('#EAF1D8', animal.name, animal.x, animal.y);
+    nombresAnimales.push(nombreAnimal);
+    animals.push(animal);
+}
+console.log(animals);
+console.log(nombresAnimales);
+//---------------------------------------------
+
 setTimeout(function () {
     exit.dibujarImg();
-    Leon.draw();
-    Mono.draw();
-    Elefante.draw();
-    AnimaldeJuan.draw();
-    AnimaldeJuan2.draw();
-    AnimaldeJuan3.draw();
-    exit.botonPresionado('../media/sounds/hasta_luegor.mp3')
-}, 150)
+    for (let i = 0; i < animals.length; i++) {
+        animals[i].draw();
+        nombresAnimales[i].Cuadro();
+        console.log(i)
+        nombresAnimales[i].CuadroTexto(180*(i+1),10,)
+    }
+    exit.botonPresionado('../media/sounds/hasta_luegor.mp3', '../')
+
+
+}, 500);
+
 
 function randomPosition() {
     const positions = [
-      { x: 0, y: 200 },
-      { x: 250, y: 200 },
-      { x: 500, y: 200 },
-      { x: 750, y: 200 },
-      { x: 1000, y: 200 },
-      { x: 0, y: 500 },
-      { x: 250, y: 500 },
-      { x: 500, y: 500 },
-      { x: 750, y: 500 },
-      { x: 1000, y: 500 },
+        { x: 0, y: 200 },
+        { x: 250, y: 200 },
+        { x: 500, y: 200 },
+        { x: 750, y: 200 },
+        { x: 1000, y: 200 },
+        { x: 0, y: 500 },
+        { x: 250, y: 500 },
+        { x: 500, y: 500 },
+        { x: 750, y: 500 },
+        { x: 1000, y: 500 },
     ];
-  
+
     const randomPositions = [];
     const takenIndexes = [];
-  
+
     for (let i = 0; i < 6; i++) {
-      let randomIndex;
-      do {
-        randomIndex = random(10);
-      } while (takenIndexes.includes(randomIndex));
-      takenIndexes.push(randomIndex);
-      randomPositions.push(positions[randomIndex]);
+        let randomIndex;
+        do {
+            randomIndex = random(10);
+        } while (takenIndexes.includes(randomIndex));
+        takenIndexes.push(randomIndex);
+        randomPositions.push(positions[randomIndex]);
     }
-  
+
     return randomPositions;
-  }
-  
-  function random(max) {
+}
+
+function random(max) {
     return Math.floor(Math.random() * max);
-  }
-  
-  const orderedPositions = randomPosition();
-  console.log(orderedPositions);
-  
+}
+
+//const orderedPositions = randomPosition();
+//console.log(orderedPositions);
+
+
+
