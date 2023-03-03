@@ -21,17 +21,22 @@ body{
     --colores : #eaf1d85f;
 } 
 .header{
-    background-color: var(--blue);
-    border-radius: 6px;
+    background-color: var(--oranche-yellow);
+    border-radius: 10px;
     height: 20vh;
     width: 100vh;
     margin-bottom: 15px;
     color: #fff;
-    padding: 20px;
+    padding: 10px;
+    
 }
 
-#logo{
-    
+.img-logo{
+    width: 150px;
+    height: auto;  
+    box-shadow: 1px 1px 20px black ;
+    border-radius: 20px;
+    border-style: none;
 }
 
 .sec{
@@ -69,7 +74,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1120px;
+    width: 1100px;
 }
 .header li{
     list-style-type: none;
@@ -99,6 +104,7 @@ body{
     border-radius: 3px;
     box-shadow: 1px 1px 2px black;
     padding: 0 20px 0 20px;
+    margin-left: 10px;
     transition: transform 0.1s ease-in-out;
 }
 .music button:hover {
