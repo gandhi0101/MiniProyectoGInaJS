@@ -321,11 +321,6 @@ function random(max) {
 //const orderedPositions = randomPosition();
 //console.log(orderedPositions);
 
-
-
-<<<<<<< Updated upstream
-=======
 setTimeout(function () {
     detenerCronometro();
 }, 60*1000);
->>>>>>> Stashed changes

@@ -1,4 +1,3 @@
-
 //mostrar el JSON con los Scores
 function MostraScore(x, y) {
 
