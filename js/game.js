@@ -1,3 +1,4 @@
+iniciarCronometro();
 function randomPosition() {
     const positions = [
         { x: 0, y: 200 },
@@ -30,10 +31,34 @@ function randomPosition() {
 function random(max) {
     return Math.floor(Math.random() * max);
 }
+var cronometro = document.getElementById("cronometro");
+var milisegundos = 0;
+var intervalo = 0;
+
+function iniciarCronometro() {
+    intervalo = setInterval(actualizarCronometro, 10);
+}
+
+function detenerCronometro() {
+    clearInterval(intervalo);
+    window.location.replace('../Score.html');//la ruta queda pendiente
+}
+
+function actualizarCronometro() {
+    milisegundos += 10;
+    let date = new Date(milisegundos);
+    cronometro.innerHTML = date.getUTCHours().toString().padStart(2, "0") + ":" +
+        date.getUTCMinutes().toString().padStart(2, "0") + ":" +
+        date.getUTCSeconds().toString().padStart(2, "0") + "." +
+        date.getUTCMilliseconds().toString().padStart(3, "0");
+        localStorage.setItem('Time',parseInt(milisegundos/1000));
+}
+
 const persona = new User;
 
 const play = new Fondo("../media/assets/Pantalla-principal/fondo-principal.png", 0, 0, 3840 / 3, 2160 / 3, "game");
 const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
+const ready = new Botones('', 1200, 45, 100, 75, "../media/assets/Pantalla-alias/aceptar.png")
 //
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
@@ -51,7 +76,8 @@ const animalData = [
     { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo" },
     { src: "../media/img/Rinoceronte.png", name: "Rinoceronte" },
 ];
-
+const AnimalCoord = [];
+const coord = [];
 const Animales = [];
 const nombresAnimales = [];
 const animals = [];
@@ -65,7 +91,7 @@ for (let i = 0; i < animalData.length; i++) {
         200
     );
     let animales = new NombresAnimales('#EAF1D8', animalData[i].name, animal.x + 60, animal.y - 60);
-    let NombreAnimales = new NombresAnimales('#EAF1D8', animalData[i].name, 180 * (i + 1), 10);
+    let NombreAnimales = new NombresAnimales('#EAF1D8', animalData[i].name, 160 * (i + 1), 10);
     Animales.push(animales);
     nombresAnimales.push(NombreAnimales);
     animals.push(animal);
@@ -75,13 +101,17 @@ for (let i = 0; i < animalData.length; i++) {
 
 setTimeout(function () {
     exit.dibujarImg();
+    ready.dibujarImg();
     for (let i = 0; i < 6; i++) {
+        AnimalCoord[i] = [{ nombre: animals[i].name, coordX: animals[i].x, coordY: animals[i].y }]
         animals[i].draw();
         Animales[i].Cuadro();
         nombresAnimales[i].CuadroTexto()
     }
-    exit.botonPresionado('../media/sounds/hasta_luegor.mp3', '../')
-}, 500);
+    localStorage.setItem("CoordAnimal", JSON.stringify(AnimalCoord));
+    exit.botonPresionado('../media/sounds/hasta_luego.mp3', '../index.html');
+    ready.botonPresionado('../media/sounds/Como_te_fue.mp3', '../valida.html');
+}, 600);
 
 
 //let shape =  nombresAnimales;
@@ -146,8 +176,10 @@ canvas.addEventListener('mousemove', (event) => {
     current_shape.x += dx;
     current_shape.y += dy;
     draw_nombresAnimales();
+    coord[current_shape_index] = [{ nombre: nombresAnimales[current_shape_index].name, coordX: nombresAnimales[current_shape_index].x - 60, coordY: nombresAnimales[current_shape_index].y + 60 }]
     startX = mouseX;
     startY = mouseY;
+
 });
 
 const draw_nombresAnimales = () => {
@@ -155,22 +187,25 @@ const draw_nombresAnimales = () => {
     play.dibujaFondo();
 
     // Dibujar los objetos (excepto los nombres de los animales)
-    setTimeout(function () {exit.dibujarImg();
+    setTimeout(function () {
+        exit.dibujarImg();
         for (let i = 0; i < 6; i++) {
             animals[i].draw();
             Animales[i].Cuadro();
         }
-    
+
         // Dibujar los nombres de los animales y borrar los nombres antiguos
         for (let shape of nombresAnimales) {
             // Borrar el rectángulo alrededor del nombre del animal
             ctx.clearRect(shape.xT, shape.yT, shape.width, shape.height);
-    
+
             // Dibujar el nombre del animal actualizado
             shape.CuadroTexto();
-        }},150);
+        }
+    }, 150);
+    localStorage.setItem('coord', JSON.stringify(coord))
 };
-
+//console.log(JSON.stringify(coord));
 draw_nombresAnimales();
 
 //const orderedPositions = randomPosition();
@@ -178,3 +213,6 @@ draw_nombresAnimales();
 
 
 
+setTimeout(function () {
+    detenerCronometro();
+}, 30*1000);

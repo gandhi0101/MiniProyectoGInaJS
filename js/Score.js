@@ -5,18 +5,24 @@ function MostraScore(x, y) {
     const users = new User();
     let usersJSON = users.ShowScore();
     //var highScore
-    usersJSON.sort(function (a,b){
-        return a.score-b.score;
+    usersJSON.sort(function (a, b) {
+        return a.score - b.score;
     });
-    usersJSON.reverse()
-;    console.log(usersJSON);
+    usersJSON.reverse();
+    console.log(usersJSON);
+    textoN = new NombresAnimales('#eaf1d8ff', "Alias", x, y - 70);
+    textoS = new NombresAnimales('#eaf1d8ff', "Score", x + 300, y - 70);
+    textoT = new NombresAnimales('#eaf1d8ff', "Tiempo", x + 400, y - 70);
+    textoN.CuadroTexto(x, y);
+    textoS.CuadroTexto(x, y);
+    textoT.CuadroTexto(x, y);
     for (let i = 0; i < 5; i++) {
-
-
-        textoN = new NombresAnimales('#eaf1d8cf', usersJSON[i].alias, x, y)
-        textoS = new NombresAnimales('#eaf1d8cf', usersJSON[i].score, x + 400, y);
-        textoN.CuadroTexto(x, y + (80 * i + 1));
-        textoS.CuadroTexto(x + 200, y + (80 * i + 1));
+        textoN = new NombresAnimales('#eaf1d8cf', usersJSON[i].alias, x, y + (80 * i + 1));
+        textoS = new NombresAnimales('#eaf1d8cf', usersJSON[i].score, x + 300, y + (80 * i + 1));
+        textoT = new NombresAnimales('#eaf1d8cf', usersJSON[i].tiempo, x + 400, y + (80 * i + 1));
+        textoN.CuadroTexto(x, y);
+        textoS.CuadroTexto(x, y);
+        textoT.CuadroTexto(x, y);
     }
 }
 //console.log("hola");
@@ -33,10 +39,10 @@ setTimeout(function () {
 
 }, 160);
 setTimeout(function () {
-    MostraScore(250, 130);
+    MostraScore(200, 130);
 
-}, 200);
+}, 300);
 
-exit.botonPresionado('../media/sounds/hasta_luegor.mp3', '../')
+exit.botonPresionado('../media/sounds/hasta_luegor.mp3',"../index.html");
 
 
