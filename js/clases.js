@@ -34,7 +34,7 @@ class User {
         const inputAlias = document.getElementById('inputAlias');
         localStorage.setItem('alias', inputAlias.value);
         localStorage.setItem('score', 0);
-        localStorage.setItem('tiempo', document.getElementById('cronomertro') === null? 0 : document.getElementById('cronometro').value);
+        localStorage.setItem('tiempo',parseInt(milisegundos/1000) == undefined? 0: parseInt(milisegundos/1000);
         console.log(inputAlias.value)
         let hasRedirected = localStorage.getItem('hasRedirected');
         if (!hasRedirected) {
