@@ -33,7 +33,7 @@ class User {
         localStorage.removeItem('hasRedirected');
         const inputAlias = document.getElementById('inputAlias');
         localStorage.setItem('alias', inputAlias.value);
-        localStorage.setItem('score', 0);
+        localStorage.setItem('score', 50);
         console.log(inputAlias.value)
         let hasRedirected = localStorage.getItem('hasRedirected');
         if (!hasRedirected) {
@@ -47,7 +47,7 @@ class User {
         if (usuariosLocalStorage) {
             usuariosJSON = Object.assign(usuariosJSON, JSON.parse(usuariosLocalStorage));
         }
-        usuariosJSON.push({ alias: localStorage.getItem('alias') }, { score: localStorage.getItem('score') });
+        usuariosJSON.push({ alias: localStorage.getItem('alias') ,  score: localStorage.getItem('score') });
 
         // Guarda el objeto usuariosJSON en el almacenamiento local
         localStorage.setItem('usuarios', JSON.stringify(usuariosJSON));
@@ -56,6 +56,12 @@ class User {
     }
     saluda() {
 
+    }
+    
+    ShowScore() {
+        let users = JSON.parse(localStorage.getItem('usuarios'));
+
+        return users;
     }
 }
 class ElementoJuego {
