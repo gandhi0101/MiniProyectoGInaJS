@@ -102,6 +102,22 @@ class Fondo extends ElementoJuego {
     }
 }
 
+class Imagenes extends ElementoJuego {
+    texto;
+    fondo;//en caso de img se usa dibujarimg de lo contrario dibujar(cuadrado) 
+    // url     o    color
+    constructor(texto, x, y, width, height, fondo) {
+        super(x - (width / 2), y - (height / 2), width, height, fondo);
+        this.texto = texto;
+        this.fondo = fondo;
+    }
+
+    dibujarImg() {
+        super.draw();
+    }
+
+}
+
 class Botones extends ElementoJuego {
     texto;
     fondo;//en caso de img se usa dibujarimg de lo contrario dibujar(cuadrado) 
@@ -121,7 +137,7 @@ class Botones extends ElementoJuego {
         ctx.fillRect(100, 70, 130, 50);
     }
 
-    botonPresionado(urlAudio,urlDireccion) {
+    botonPresionado(urlAudio, urlDireccion) {
         const self = this;
 
         canvas.addEventListener('click', function (event) {
@@ -143,16 +159,59 @@ class Botones extends ElementoJuego {
 
 const persona = new User;
 
-const inicio = new Fondo("../media/assets/Pantalla-presentacion/fondo-presentacion.png", 0, 0, 'mi-canvas');
-const empezar = new Botones('', 400, 300, 300, 150, "../media/assets/Pantalla-presentacion/boton-inicio.png")
+
+
 //
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
-inicio.dibujaFondo();
-setTimeout(function () {
-    empezar.dibujarImg();
-}, 150);
 
-empezar.botonPresionado('../media/sounds/vamos_a_empezar.mp3',"../game.html")
+var pathname = window.location.pathname;
+
+if (pathname == "/index.html" || pathname == "/") {
+
+    const inicio = new Fondo("../media/assets/Pantalla-presentacion/fondo-presentacion.png", 0, 0, 'mi-canvas');
+    const empezar = new Botones('', 400, 400, 175, 120, "../media/assets/Pantalla-presentacion/boton-inicio.png");
+    const logo = new Imagenes('', 400, 250, 300, 200, "../media/assets/Pantalla-presentacion/logo.png");
+
+    inicio.dibujaFondo();
+    window.addEventListener('load', function () {
+        empezar.dibujarImg();
+        logo.dibujarImg();
+    });
+    empezar.botonPresionado('../media/sounds/vamos_a_empezar.mp3', "../game.html");
+}
+
+
+if (pathname == "/ingresarAlias.html") {
+    const inicio = new Fondo("../media/assets/Pantalla-alias/fondo-alias.png", 0, 0, 'mi-canvas');
+    const alias = new Imagenes('', 400, 200, 300, 80, "../media/assets/Pantalla-alias/alias.png");
+    inicio.dibujaFondo();
+    window.addEventListener('load', function () {
+        alias.dibujarImg();
+    });
+
+}
+
+if(pathname == "/score.html"){
+    const inicio = new Fondo("../media/assets/Pantalla-alias/fondo-alias.png", 0, 0, 'mi-canvas');
+    const alias = new Imagenes('', 370, 330, 1100, 900, "../media/assets/Pantalla-score/zyro-image (2).png");
+    inicio.dibujaFondo();
+    window.addEventListener('load', function () {
+        alias.dibujarImg();
+    });
+}
+
+if(pathname == "/felicitaciones.html"){
+    const inicio = new Fondo("../media/assets/Pantalla-alias/fondo-alias.png", 0, 0, 'mi-canvas');
+    const alias = new Imagenes('', 400, 330, 600, 200, "../media/assets/Pantalla-felicitaciones/win.png");
+    const empezar = new Botones('', 400, 470, 175, 120, "../media/assets/Pantalla-presentacion/boton-inicio.png");
+
+    inicio.dibujaFondo();
+    window.addEventListener('load', function () {
+        empezar.dibujarImg();
+        alias.dibujarImg();
+    }); 
+}
+

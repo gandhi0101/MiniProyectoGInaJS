@@ -10,7 +10,7 @@
         <!--Stylesheets-->
         <link rel="stylesheet" href="css/style.css">
         <!-- Scripts -->
-        <script src="js/main.js"></script>
+        
     </head>
     <body>
 
@@ -47,17 +47,18 @@
                 </div>
             </div>
         </header>
+
         <section class="TOTAL">
             <div class="sec">
-                soy registrar alias
-                <input type="text" id="inputAlias" placeholder="Alias">
-                <button onclick="persona.ingresaAlias()">Ingresa</button>
+                <canvas id="mi-canvas"></canvas>
+                <div id="imgs"></div>
+                <div class="inputGroup">
+                    <input type="text" required="" autocomplete="off" id="inputAlias" placeholder="Alias">
+                    <button id="button1" onclick="persona.ingresaAlias()">Ingresa</button> 
+                </div>
+                
             </div>
         </section>
-        <footer class="TOTAL">
-            <div class="footer">
-                y footer
-            </div>
-        </footer>
+        <script src="js/main.js"></script>
     </body>
 </html>
