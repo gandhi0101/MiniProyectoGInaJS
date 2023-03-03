@@ -33,7 +33,7 @@ class User {
         localStorage.removeItem('hasRedirected');
         const inputAlias = document.getElementById('inputAlias');
         localStorage.setItem('alias', inputAlias.value);
-        localStorage.setItem('score', 50);
+        localStorage.setItem('score', 300);
         console.log(inputAlias.value)
         let hasRedirected = localStorage.getItem('hasRedirected');
         if (!hasRedirected) {
@@ -47,7 +47,7 @@ class User {
         if (usuariosLocalStorage) {
             usuariosJSON = Object.assign(usuariosJSON, JSON.parse(usuariosLocalStorage));
         }
-        usuariosJSON.push({ alias: localStorage.getItem('alias') ,  score: localStorage.getItem('score') });
+        usuariosJSON.push({ alias: localStorage.getItem('alias'), score: localStorage.getItem('score') });
 
         // Guarda el objeto usuariosJSON en el almacenamiento local
         localStorage.setItem('usuarios', JSON.stringify(usuariosJSON));
@@ -57,7 +57,7 @@ class User {
     saluda() {
 
     }
-    
+
     ShowScore() {
         let users = JSON.parse(localStorage.getItem('usuarios'));
 
@@ -95,8 +95,9 @@ class Fondo extends ElementoJuego {
         super(x, y, width, height, img);
         canvas = document.getElementById(idCanvas);
         ctx = canvas.getContext('2d');
-        canvas.width = 800;
-        canvas.height = 600;
+        
+        canvas.width = width;
+        canvas.height = height;
     }
 
     dibujaFondo() {
@@ -153,7 +154,6 @@ class Animal extends ElementoJuego {
     constructor(img, name, x, y, width, height) {
         super(x, y, width, height, img);
         this.name = name;
-        console.log(this.name);
     }
 
     draw() {
@@ -166,10 +166,10 @@ class Animal extends ElementoJuego {
     }
 }
 class NombresAnimales extends ElementoJuego {
-
-    constructor(color, name, x, y) {
-        super(x + 60, y - 60, ((canvas.width - 100) / 6) - 10, 60, color,)
+    constructor(color, name, x, y,) {
+        super(x , y, ((canvas.width - 100) / 6) - 50, 60, color)
         this.name = name;
+
     }
     Cuadro() {
         /*ctx.fillStyle = this.img;
@@ -184,6 +184,7 @@ class NombresAnimales extends ElementoJuego {
         ctx.lineTo(this.x + this.width, this.y + this.height - radius);
         ctx.arcTo(this.x + this.width, this.y + this.height, this.x + this.width - radius, this.y + this.height, radius);
         ctx.lineTo(this.x + radius, this.y + this.height);
+
         ctx.arcTo(this.x, this.y + this.height, this.x, this.y + this.height - radius, radius);
         ctx.lineTo(this.x, this.y + radius);
         ctx.arcTo(this.x, this.y, this.x + radius, this.y, radius);
@@ -192,35 +193,45 @@ class NombresAnimales extends ElementoJuego {
         ctx.fill();
     }
 
-    arrastrar() {
-        //if()
-    }
-    soltar() {
 
-    }
-    CuadroTexto(x, y,) {
-        let width = 150;
-        let height = 70;
-
-
-        var radius = 20;
+    CuadroTexto() {
+        var radius = 10;
 
         ctx.beginPath();
-        ctx.moveTo(x + radius, y);
-        ctx.lineTo(x + width - radius, y);
-        ctx.arcTo(x + width, y, x + width, y + radius, radius);
-        ctx.lineTo(x + width, y + height - radius);
-        ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
-        ctx.lineTo(x + radius, y + height);
-        ctx.arcTo(x, y + height, x, y + height - radius, radius);
-        ctx.lineTo(x, y + radius);
-        ctx.arcTo(x, y, x + radius, y, radius);
+        ctx.moveTo(this.x + radius, this.y);
+        ctx.lineTo(this.x + this.width - radius, this.y);
+        ctx.arcTo(this.x + this.width, this.y, this.x + this.width, this.y + radius, radius);
+        ctx.lineTo(this.x + this.width, this.y + this.height - radius);
+        ctx.arcTo(this.x + this.width, this.y + this.height, this.x + this.width - radius, this.y + this.height, radius);
+        ctx.lineTo(this.x + radius, this.y + this.height);
+        ctx.arcTo(this.x, this.y + this.height, this.x, this.y + this.height - radius, radius);
+        ctx.lineTo(this.x, this.y + radius);
+        ctx.arcTo(this.x, this.y, this.x + radius, this.y, radius);
 
         ctx.fillStyle = this.img;
         ctx.fill();
         ctx.fillStyle = 'black';
         ctx.font = '15px sans-serif';
-        ctx.fillText(this.name, x + 10, y + 25);
+        ctx.fillText(this.name, this.x + 40, this.y + 30);
+    }
+    cuadro(x,y) {
+        
+        var radius = 20;
+
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + this.width - radius, y);
+        ctx.arcTo(x + this.width, y, x + this.width, y + radius, radius);
+        ctx.lineTo(x + this.width, y + this.height - radius);
+        ctx.arcTo(x + this.width, y + this.height, x + this.width - radius, y + this.height, radius);
+        ctx.lineTo(x + radius, y + this.height);
+
+        ctx.arcTo(x, y + this.height, x, y + this.height - radius, radius);
+        ctx.lineTo(x, y + radius);
+        ctx.arcTo(x, y, x + radius, y, radius);
+
+        ctx.fillStyle = this.img;
+        ctx.fill();
     }
 
 }
