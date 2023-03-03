@@ -323,3 +323,9 @@ function random(max) {
 
 
 
+<<<<<<< Updated upstream
+=======
+setTimeout(function () {
+    detenerCronometro();
+}, 60*1000);
+>>>>>>> Stashed changes
