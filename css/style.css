@@ -18,11 +18,12 @@ body{
     --oranche-yellow : #FFBB33;
     --yellow : #F9F871;
     --red : #dd000023;
+    --colores : #eaf1d85f;
 } 
 .header{
     background-color: var(--blue);
     border-radius: 6px;
-    
+    height: 20vh;
     width: 100vh;
     margin-bottom: 15px;
     color: #fff;
@@ -97,4 +98,37 @@ body{
 .music button:hover {
     transform: scale(1.1);
     background-color: #ec00b9e1;
+}
+
+.alias{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.imgAlias{
+    width: 210px;
+    margin-bottom: 15px;
+}
+
+#inputAlias{
+    padding: 10px;
+    border-radius: 10px;
+    border-style: none;
+    margin-bottom: 15px;
+    text-align: center;
+    
+}
+
+.botonAlias{
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+    border-color: #FF683E;
+    background-color: #FFBB33;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    width: 100px;
+    cursor: pointer;
 }
