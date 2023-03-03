@@ -26,7 +26,13 @@ body{
     width: 100vh;
     margin-bottom: 15px;
     color: #fff;
+    padding: 20px;
 }
+
+#logo{
+    
+}
+
 .sec{
     background-color: var(--red);
     border-radius: 6px;
@@ -62,7 +68,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    width: 1120px;
 }
 .header li{
     list-style-type: none;
@@ -98,3 +104,40 @@ body{
     transform: scale(1.1);
     background-color: #ec00b9e1;
 }
+
+
+.alias{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.imgAlias{
+    width: 210px;
+    margin-bottom: 15px;
+}
+
+#inputAlias{
+    padding: 10px;
+    border-radius: 10px;
+    border-style: none;
+    margin-bottom: 15px;
+    text-align: center;
+    
+}
+
+.botonAlias{
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+    border-color: #FF683E;
+    background-color: #FFBB33;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    width: 100px;
+    cursor: pointer;
+}
+
+
+
