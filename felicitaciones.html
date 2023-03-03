@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,16 +9,14 @@
         <link rel="shortcut icon" href="media/img/favicon.png" type="image/">
         <!--Stylesheets-->
         <link rel="stylesheet" href="css/style.css">
-
+        <!-- Scripts -->
     </head>
     <body>
-
-
         <header class="TOTAL">
             <div class="header center-logo">
                 <div id="logo">
                     <img src="media/img/UAAGAMES.png" class="img-logo"
-                        alt="Logo">
+                        alt="Logo" style="width: 100px; height: auto;">
                 </div>
 
                 <li>
@@ -29,7 +27,7 @@
                         <a href="#" class="btn-Menu">Creditos</a>
                     </ul>
                     <ul>
-                        <a href="#" class="btn-Menu">Score</a>
+                        <a href="#" class="btn-Menu">High Score</a>
                     </ul>
                 </li>
                 <div class="music">
@@ -46,22 +44,13 @@
                 </div>
             </div>
         </header>
-
         <section class="TOTAL">
             <div class="sec">
-                <div class="alias">
-                    <img class="imgAlias" src="media/assets/Pantalla-alias/alias.png" alt="">
-                    <input type="text" id="inputAlias" placeholder="Alias">
-                    <button class="botonAlias" onclick="persona.ingresaAlias()">Ingresa</button>
-                </div>
+                <canvas id="mi-canvas"></canvas>
+                <div id="imgs"></div>
             </div>
         </section>
-        <footer class="TOTAL">
-            <div class="footer">
-                y footer
-            </div>
-        </footer>
-    </body><!-- Scripts-->    
-    <script src="js/clases.js"></script>
+    </body>
     <script src="js/main.js"></script>
+
 </html>
