@@ -125,9 +125,13 @@ body {
 .music {
   margin: 0 20px;
   display: flex;
+<<<<<<< HEAD
+  margin-left: 680px;
+=======
 
   margin-left: 700px;
 
+>>>>>>> 074fb69f31fef8c6029b48a52667565bc3d6f2c9
 }
 
 .music button {
