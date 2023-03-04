@@ -28,6 +28,7 @@ function MostraScore(x, y) {
 const score = new Fondo("../media/assets/Pantalla-score/fondo.png", 0, 0, 850, 700, 'mi-canvas-score');
 const marco = new Fondo("../media/assets/Pantalla-score/zyro-image (2).png", -10, -80, 850, 700, 'mi-canvas-score');
 const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
+
 score.dibujaFondo();
 setTimeout(function () {
     marco.dibujaFondo();
