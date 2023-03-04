@@ -1,29 +1,29 @@
 body {
-
-  background-image: url(../media/img/SAFARI\ SQUAD\ fondo.png);
-  background-position: 40% 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  /*background-image: linear-gradient(to right top, #051937, #004864, #017b80, #66ad8c, #c6da99);*/
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+background-image: url(../media/img/SAFARI\ SQUAD\ fondo.png);
+    background-position: 40% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-image: linear-gradient(to right top, #051937, #004864, #017b80, #66ad8c, #c6da99);*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 /*Variables de los colores*/
 :root {
-  --blue: #0d4f9b42;
-  --pink: #EC00B8;
-  --magenta: #FF0071;
-  --orange: #FF683E;
-  --oranche-yellow: #FFBB33;
-  --yellow: #F9F871;
-  --red: #dd000023;
+    --blue: #0d4f9b42;
+    --pink: #EC00B8;
+    --magenta: #FF0071;
+    --orange: #FF683E;
+    --oranche-yellow: #FFBB33;
+    --yellow: #F9F871;
+    --red: #dd000023;
+    --colores: #eaf1d85f;
 }
 
-.header {
+.header{
   background-color: var(--blue);
   border-radius: 6px;
   margin-bottom: 15px;
@@ -34,123 +34,105 @@ body {
   right: 0;
   z-index: 9999;
   height: 150px;
-  --colores: #9ea48eb4;
+  --colores: #eaf1d85f;
 }
 
-
 .img-logo {
-  width: 100px;
-  height: auto;
-  box-shadow: 1px 1px 20px black;
-  border-radius: 20px;
-  border-style: none;
-  margin-top: -4px;
+    width: 100px;
+    height: auto;
+    box-shadow: 1px 1px 20px black;
+    border-radius: 20px;
+    border-style: none;
+    margin-top: -4px;
 
 }
 
 .sec {
-  background-color: var(--red);
-  border-radius: 6px;
-  /*height: 80vh;*/
-  width: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background-color: var(--red);
+    border-radius: 6px;
+    /*height: 80vh;*/
+    width: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 1;
-  background-color: var(--blue);
-  /*border-radius: 6px;*/
-  height: 10vh;
-  width: 100vh;
-  margin-top: 15px;
-  color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 1;
+    background-color: var(--blue);
+    /*border-radius: 6px;*/
+    height: 10vh;
+    width: 100vh;
+    margin-top: 15px;
+    color: #fff;
 }
 
-.TOTAL a{
-  display: flex;
-  justify-content: center;
+.TOTAL a {
+    display: flex;
+    justify-content: center;
 }
-
 
 .width {
-  width: 100vh;
+    width: 100vh;
 }
 
 .TOTAL {
-  width: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .center-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  width: 1320px;
-  height: 70px;
+    display: flex;
+    width: 1320px;
+    height: 70px;
 }
 
 .header li {
-  list-style-type: none;
-  display: flex;
+    list-style-type: none;
+    display: flex;
 }
 
-
 .header li ul a {
-  text-decoration: none;
-  color: #fff;
-  background-color: #EC00B8;
-  padding: 8px;
-  border-radius: 5px;
-  box-shadow: 3px 3px 15px black;
-  transition: transform 0.2s ease-in-out;
-
-  justify-content: center;
-
+    text-decoration: none;
+    color: #fff;
+    background-color: #EC00B8;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 15px black;
+    transition: transform 0.2s ease-in-out;
+    justify-content: center;
 }
 
 .header li ul a:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .music {
-  margin: 0 20px;
-  display: flex;
-<<<<<<< HEAD
-  margin-left: 680px;
-=======
-
-  margin-left: 700px;
-
->>>>>>> 074fb69f31fef8c6029b48a52667565bc3d6f2c9
+    margin: 0 20px;
+    display: flex;
+    margin-left: 680px;
 }
 
 .music button {
-  color: #fff;
-  background-color: #ec00b994;
-  border: 0px;
-  border-radius: 3px;
-  box-shadow: 1px 1px 2px black;
-  padding: 0 20px 0 20px;
-
-  margin-left: 10px;
-
-  transition: transform 0.1s ease-in-out;
+    color: #fff;
+    background-color: #ec00b994;
+    border: 0px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px black;
+    padding: 0 20px 0 20px;
+    margin-left: 10px;
+    transition: transform 0.1s ease-in-out;
 }
 
 .music button:hover {
-  transform: scale(1.1);
-  background-color: #ec00b9e1;
-
+    transform: scale(1.1);
+    background-color: #ec00b9e1;
 }
 
 
@@ -188,9 +170,11 @@ body {
 }
 
 #cronometro {
-  padding-right: 30px;
+  position: relative;
+  left: 15px;
+  top: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 40px;
+  font-size: 20px;
 
 }
 
