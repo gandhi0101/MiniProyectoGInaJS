@@ -68,7 +68,7 @@ class User {
     // Imprime el objeto usuariosJSON en la consola
     console.log(us);
   };
-  saluda() {}
+  saluda() { }
 
   ShowScore() {
     let users = JSON.parse(localStorage.getItem("usuarios"));

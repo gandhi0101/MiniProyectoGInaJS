@@ -2,6 +2,7 @@
 // setTimeout(function () {
 //     detenerCronometro();
 // },60000);
+
 function randomPosition() {
     const positions = [
         { x: 0, y: 200 },
@@ -126,9 +127,12 @@ setTimeout(function () {
 
         AnimalCoord[i] = [{ nombre: animals[i].name, coordX: animals[i].x, coordY: animals[i].y }]
 
-        animals[i].draw();
-        Animales[i].Cuadro();
-        nombresAnimales[i].CuadroTexto()
+
+        window.addEventListener('load', function () {
+            animals[i].draw();
+            Animales[i].Cuadro();
+        }); nombresAnimales[i].CuadroTexto()
+
     }
 
     localStorage.setItem("CoordAnimal", JSON.stringify(AnimalCoord));
@@ -170,7 +174,33 @@ canvas.addEventListener('mouseup', (event) => {
         return;
     }
     event.preventDefault();
+    let score = parseInt(localStorage.getItem('score'))
+    if (is_mouse_in_shape(startX, startY+60, animals[current_shape_index])) {
+        console.log(true)
+        nombresAnimales[current_shape_index].x = Animales[current_shape_index].x;
+        nombresAnimales[current_shape_index].y = Animales[current_shape_index].y;
+        draw_nombresAnimales();
+        score += 50;
+        localStorage.setItem('score', score);
+    }
+    for (var i = 0; i < 6; i++) {
+        if (i != current_shape_index) {
+            if (is_mouse_in_shape(startX, startY, animals[i])) {
+                console.log(false);
+                nombresAnimales[current_shape_index].x = 160 * (current_shape_index + 1)
+                nombresAnimales[current_shape_index].y = 10;
+                draw_nombresAnimales();
+                score -= 20;
+                if (score < 0) {
+                    score = 0;
+
+                }
+                localStorage.setItem('score', score);
+            }
+        }
+    }
     is_dragging = false;
+    console.log(score);
 });
 
 canvas.addEventListener('mouseout', (event) => {
@@ -185,11 +215,7 @@ canvas.addEventListener('mousemove', (event) => {
     if (!is_dragging) {
         return;
     }
-    
-    if (is_mouse_in_shape(startX, startY, animals[current_shape_index])) {
-        console.log(animals[current_shape_index]);
-        console.log(true)
-    }
+
     event.preventDefault();
 
 
@@ -219,19 +245,22 @@ const draw_nombresAnimales = () => {
     setTimeout(function () {
         exit.dibujarImg();
         for (let i = 0; i < 6; i++) {
+            ready.dibujarImg();
             animals[i].draw();
             Animales[i].Cuadro();
         }
+        setTimeout(function () {
+            // Dibujar los nombres de los animales y borrar los nombres antiguos
+            for (let shape of nombresAnimales) {
+                // Borrar el rectángulo alrededor del nombre del animal
+                ctx.clearRect(shape.xT, shape.yT, shape.width, shape.height);
+
+                // Dibujar el nombre del animal actualizado
+                shape.CuadroTexto();
+            }
+        })
 
 
-        // Dibujar los nombres de los animales y borrar los nombres antiguos
-        for (let shape of nombresAnimales) {
-            // Borrar el rectángulo alrededor del nombre del animal
-            ctx.clearRect(shape.xT, shape.yT, shape.width, shape.height);
-
-            // Dibujar el nombre del animal actualizado
-            shape.CuadroTexto();
-        }
     }, 150);
     localStorage.setItem('coord', JSON.stringify(coord))
 };
