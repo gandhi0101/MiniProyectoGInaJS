@@ -24,13 +24,14 @@ function randomPosition() {
         takenIndexes.push(randomIndex);
         randomPositions.push(positions[randomIndex]);
     }
-
+    console.log(randomPositions);
     return randomPositions;
 }
 
 function random(max) {
     return Math.floor(Math.random() * max);
 }
+
 var cronometro = document.getElementById("cronometro");
 var milisegundos = 0;
 var intervalo = 0;
@@ -188,7 +189,7 @@ const draw_nombresAnimales = () => {
             animals[i].draw();
             Animales[i].Cuadro();
         }
-
+        console.log("hola");
         // Dibujar los nombres de los animales y borrar los nombres antiguos
         for (let shape of nombresAnimales) {
             // Borrar el rectángulo alrededor del nombre del animal
@@ -198,6 +199,7 @@ const draw_nombresAnimales = () => {
             shape.CuadroTexto();
         }
     }, 150);
+
 };
 
 draw_nombresAnimales();
