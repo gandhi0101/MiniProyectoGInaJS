@@ -33,8 +33,7 @@ class User {
         localStorage.removeItem('hasRedirected');
         const inputAlias = document.getElementById('inputAlias');
         localStorage.setItem('alias', inputAlias.value);
-        localStorage.setItem('score', 0);
-        localStorage.setItem('tiempo',parseInt(milisegundos/1000) == undefined? 0: parseInt(milisegundos/1000));
+        localStorage.setItem('score', 300);
         console.log(inputAlias.value)
         let hasRedirected = localStorage.getItem('hasRedirected');
         if (!hasRedirected) {
@@ -48,7 +47,7 @@ class User {
         if (usuariosLocalStorage) {
             usuariosJSON = Object.assign(usuariosJSON, JSON.parse(usuariosLocalStorage));
         }
-        usuariosJSON.push({ alias: localStorage.getItem('alias'), score: localStorage.getItem('score'), tiempo:localStorage.getItem('tiempo')});
+        usuariosJSON.push({ alias: localStorage.getItem('alias'), score: localStorage.getItem('score') });
 
         // Guarda el objeto usuariosJSON en el almacenamiento local
         localStorage.setItem('usuarios', JSON.stringify(usuariosJSON));
@@ -136,12 +135,9 @@ class Botones extends ElementoJuego {
                 canvas.removeEventListener('click', event);
                 var audio = new Audio(urlAudio);
                 audio.play();
-                if(!document.getElementById('cronomertro') === null){detenerCronometro()}
-                setTimeout(function(){
-                    window.location.replace(urlDireccion);
+                window.location.replace(urlDireccion);
 
-                },2000)
-            }   
+            }
 
         });
     }
@@ -180,7 +176,7 @@ class NombresAnimales extends ElementoJuego {
         ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.fillText("hola guapos", this.x + 5, this.y + 5);*/
         var radius = 20;
-        console.log(this.width,this.height)
+
         ctx.beginPath();
         ctx.moveTo(this.x + radius, this.y);
         ctx.lineTo(this.x + this.width - radius, this.y);
@@ -216,7 +212,7 @@ class NombresAnimales extends ElementoJuego {
         ctx.fill();
         ctx.fillStyle = 'black';
         ctx.font = '15px sans-serif';
-        ctx.fillText(this.name, this.x + 15, this.y + 30);
+        ctx.fillText(this.name, this.x + 40, this.y + 30);
     }
     cuadro(x,y) {
         
