@@ -223,6 +223,27 @@ class NombresAnimales extends ElementoJuego {
 
         ctx.fillText(this.name, this.x + 15, this.y + 30);
     }
+
+    textoFelicitacion() {
+        var radius = 10;
+
+        ctx.beginPath();
+        ctx.moveTo(this.x + radius, this.y);
+        ctx.lineTo(this.x + this.width - radius, this.y);
+        ctx.arcTo(this.x + this.width, this.y, this.x + this.width, this.y + radius, radius);
+        ctx.lineTo(this.x + this.width, this.y + this.height - radius);
+        ctx.arcTo(this.x + this.width, this.y + this.height, this.x + this.width - radius, this.y + this.height, radius);
+        ctx.lineTo(this.x + radius, this.y + this.height);
+        ctx.arcTo(this.x, this.y + this.height, this.x, this.y + this.height - radius, radius);
+        ctx.lineTo(this.x, this.y + radius);
+        ctx.arcTo(this.x, this.y, this.x + radius, this.y, radius);
+
+        ctx.fillStyle = this.img;
+        ctx.fill();
+        ctx.fillStyle = 'black';
+        ctx.font = '15px sans-serif';
+    }
+
     cuadro(x,y) {
         
 
