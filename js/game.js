@@ -1,5 +1,4 @@
 iniciarCronometro();
-
 setTimeout(function () {
     detenerCronometro();
 },60000);
@@ -20,6 +19,7 @@ function randomPosition() {
     const randomPositions = [];
     const takenIndexes = [];
 
+
     for (let i = 0; i < 6; i++) {
         let randomIndex;
         do {
@@ -28,9 +28,19 @@ function randomPosition() {
         takenIndexes.push(randomIndex);
         randomPositions.push(positions[randomIndex]);
     }
-    console.log(randomPositions);
+
+
     return randomPositions;
 }
+
+function random(max) {
+    return Math.floor(Math.random() * max);
+
+}
+var cronometro = document.getElementById("cronometro");
+var milisegundos = 0;
+var intervalo = 0;
+
 
 function random(max) {
     return Math.floor(Math.random() * max);
@@ -56,13 +66,17 @@ function actualizarCronometro() {
         date.getUTCMinutes().toString().padStart(2, "0") + ":" +
         date.getUTCSeconds().toString().padStart(2, "0") + "." +
         date.getUTCMilliseconds().toString().padStart(3, "0");
+
+        localStorage.setItem('Time',parseInt(milisegundos/1000));
+
 }
 
 const persona = new User;
 
 const play = new Fondo("../media/assets/Pantalla-principal/fondo-principal.png", 0, 0, 3840 / 3, 2160 / 3, "game");
 const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
-const ready = new Botones('',1200,45,100,75,"../media/assets/Pantalla-alias/aceptar.png")
+
+const ready = new Botones('', 1200, 45, 100, 75, "../media/assets/Pantalla-alias/aceptar.png")
 //
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
@@ -80,7 +94,10 @@ const animalData = [
     { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo" },
     { src: "../media/img/Rinoceronte.png", name: "Rinoceronte" },
 ];
-const coord= [];
+
+const AnimalCoord = [];
+const coord = [];
+
 const Animales = [];
 const nombresAnimales = [];
 const animals = [];
@@ -106,10 +123,16 @@ setTimeout(function () {
     exit.dibujarImg();
     ready.dibujarImg();
     for (let i = 0; i < 6; i++) {
+
+        AnimalCoord[i] = [{ nombre: animals[i].name, coordX: animals[i].x, coordY: animals[i].y }]
+
         animals[i].draw();
         Animales[i].Cuadro();
         nombresAnimales[i].CuadroTexto()
     }
+
+    localStorage.setItem("CoordAnimal", JSON.stringify(AnimalCoord));
+
     exit.botonPresionado('../media/sounds/hasta_luego.mp3', '../index.html');
     ready.botonPresionado('../media/sounds/Como_te_fue.mp3', '../valida.html');
 }, 600);
@@ -177,6 +200,8 @@ canvas.addEventListener('mousemove', (event) => {
     current_shape.x += dx;
     current_shape.y += dy;
     draw_nombresAnimales();
+
+    coord[current_shape_index] = [{ nombre: nombresAnimales[current_shape_index].name, coordX: nombresAnimales[current_shape_index].x - 60, coordY: nombresAnimales[current_shape_index].y + 60 }]
     startX = mouseX;
     startY = mouseY;
 
@@ -193,7 +218,8 @@ const draw_nombresAnimales = () => {
             animals[i].draw();
             Animales[i].Cuadro();
         }
-        console.log("hola");
+
+
         // Dibujar los nombres de los animales y borrar los nombres antiguos
         for (let shape of nombresAnimales) {
             // Borrar el rectángulo alrededor del nombre del animal
@@ -203,12 +229,11 @@ const draw_nombresAnimales = () => {
             shape.CuadroTexto();
         }
     }, 150);
-
+    localStorage.setItem('coord', JSON.stringify(coord))
 };
-
+//console.log(JSON.stringify(coord));
 draw_nombresAnimales();
 
 //const orderedPositions = randomPosition();
 //console.log(orderedPositions);
-
 
