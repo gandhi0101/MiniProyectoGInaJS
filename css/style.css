@@ -34,7 +34,7 @@ body {
   right: 0;
   z-index: 9999;
   height: 150px;
-  --colores: #eaf1d85f;
+  --colores: #9ea48eb4;
 }
 
 
@@ -104,7 +104,7 @@ body {
   display: flex;
 }
 
->>>>>>> Diseño
+
 .header li ul a {
   text-decoration: none;
   color: #fff;
@@ -289,9 +289,9 @@ body {
   border-width: 0.125rem;
   border-color: #EF2D56;
 
-  -webkit-box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
-  -moz-box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
-  -box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
+  --webkit-box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
+  --moz-box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
+  --box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
 }
 
 .example {
@@ -320,7 +320,7 @@ body {
 .imgAlias {
   padding-left: 30px;
   padding-bottom: 100px;
-
+}
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .example {
