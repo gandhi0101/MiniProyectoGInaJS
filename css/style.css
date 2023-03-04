@@ -303,11 +303,35 @@ background-color: #ec00b9e1;
   /* Firefox */
 }
 
-.imgAlias {
-  padding-left: 30px;
-  padding-bottom: 100px;
+.alias{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
-
+.imgAlias{
+  width: 210px;
+  margin-bottom: 15px;
+}
+#inputAlias{
+  padding: 10px;
+  border-radius: 10px;
+  border-style: none;
+  margin-bottom: 15px;
+  text-align: center;
+  
+}
+.botonAlias{
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 10px;
+  border-color: #FF683E;
+  background-color: #FFBB33;
+  text-transform: uppercase;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+  width: 100px;
+  cursor: pointer;
+}
 /* Hide scrollbar for IE, Edge and Firefox */
 .example {
   -ms-overflow-style: none;
