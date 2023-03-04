@@ -1,7 +1,7 @@
-iniciarCronometro();
-setTimeout(function () {
-    detenerCronometro();
-},60000);
+// iniciarCronometro();
+// setTimeout(function () {
+//     detenerCronometro();
+// },60000);
 function randomPosition() {
     const positions = [
         { x: 0, y: 200 },

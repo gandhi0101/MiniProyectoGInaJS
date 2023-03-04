@@ -241,7 +241,7 @@ class NombresAnimales extends ElementoJuego {
         ctx.fillStyle = this.img;
         ctx.fill();
         ctx.fillStyle = 'black';
-        ctx.font = '15px sans-serif';
+        ctx.font = '20px sans-serif';
     }
 
     cuadro(x,y) {

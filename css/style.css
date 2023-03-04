@@ -168,7 +168,7 @@ background-image: url(../media/img/SAFARI\ SQUAD\ fondo.png);
 
 #cronometro {
   position: relative;
-  left: 15px;
+  left: 320px;
   top: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
@@ -179,7 +179,7 @@ background-image: url(../media/img/SAFARI\ SQUAD\ fondo.png);
   font-family: 'Segoe UI', sans-serif;
   max-width: 300px;
   display: flex;
-  left: 38%;
+  /* left: 38%; */
   position: absolute;
 }
 
