@@ -140,7 +140,7 @@ class Botones extends ElementoJuego {
                 setTimeout(function(){
                     window.location.replace(urlDireccion);
 
-                },2000)
+                },2500)
             }   
 
         });
