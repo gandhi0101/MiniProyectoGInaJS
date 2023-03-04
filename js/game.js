@@ -74,7 +74,7 @@ const animalData = [
     { src: "../media/assets/Pantalla-principal/elefante.png", name: "Elefante" },
     { src: "../media/assets/Pantalla-principal/zebra.png", name: "Zebra" },
     { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo" },
-    { src: "../media/img/Rinoceronte.png", name: "Rinoceronte" },
+    { src: "../media/img/hiena.png", name: "hiena" },
 ];
 const AnimalCoord = [];
 const coord = [];
