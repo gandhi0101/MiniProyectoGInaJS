@@ -49,19 +49,22 @@
 
         <section class="TOTAL">
             <div class="sec">
-                <div class="alias">
-                    <img class="imgAlias" src="media/assets/Pantalla-alias/alias.png" alt="">
-                    <input type="text" id="inputAlias" placeholder="Alias">
-                    <button class="botonAlias" onclick="persona.ingresaAlias()">Ingresa</button>
+                <div id="imgs">
+                    <img class="imgAlias"
+                        src="media/assets/Pantalla-alias/alias.png" alt=""
+                        style="width: 200px; height: auto;">
+                    </div>
+                <div class="inputGroup">
+
+                    <input type="text" required="" autocomplete="off"
+                        id="inputAlias" placeholder="Alias">
+                    <button id="button1" onclick="persona.ingresaAlias()">Ingresa</button>
+                   
                 </div>
-            </div>
-        </section>
-        <footer class="TOTAL">
-            <div class="footer">
-                y footer
-            </div>
-        </footer>
-    </body><!-- Scripts-->    
+            </section>
+           
+    </body><!-- Scripts-->
+
     <script src="js/clases.js"></script>
     <script src="js/main.js"></script>
 </html>

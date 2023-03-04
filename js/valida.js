@@ -4,5 +4,5 @@ function valida() {
     nimal = localStorage.getItem('CoordAnimal');
     nombre = localStorage.getItem('coord');
 
-}
 
+}

@@ -1,4 +1,3 @@
-
 //mostrar el JSON con los Scores
 function MostraScore(x, y) {
 
@@ -17,7 +16,9 @@ function MostraScore(x, y) {
     textoS.CuadroTexto(x, y);
     textoT.CuadroTexto(x, y);
     for (let i = 0; i < 5; i++) {
+
         textoN = new NombresAnimales('#eaf1d8cf', usersJSON[i].alias, x, y + (80 * i + 1));
+
         textoS = new NombresAnimales('#eaf1d8cf', usersJSON[i].score, x + 300, y + (80 * i + 1));
         textoT = new NombresAnimales('#eaf1d8cf', usersJSON[i].tiempo, x + 400, y + (80 * i + 1));
         textoN.CuadroTexto(x, y);
@@ -26,9 +27,12 @@ function MostraScore(x, y) {
     }
 }
 //console.log("hola");
-const score = new Fondo("../media/assets/Pantalla-score/fondo.png", 0, 0, 800, 600, 'mi-canvas-score');
-const marco = new Fondo("../media/assets/Pantalla-score/zyro-image (2).png", -10, -80, 800, 700, 'mi-canvas-score');
+
+const score = new Fondo("../media/assets/Pantalla-score/fondo.png", 0, 0, 850, 700, 'mi-canvas-score');
+const marco = new Fondo("../media/assets/Pantalla-score/zyro-image (2).png", -10, -80, 850, 700, 'mi-canvas-score');
 const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
+
+
 score.dibujaFondo();
 setTimeout(function () {
     marco.dibujaFondo();
