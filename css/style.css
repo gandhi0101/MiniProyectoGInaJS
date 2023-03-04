@@ -1,8 +1,10 @@
 body {
+
   background-image: url(../media/img/SAFARI\ SQUAD\ fondo.png);
   background-position: 40% 50%;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
   /*background-image: linear-gradient(to right top, #051937, #004864, #017b80, #66ad8c, #c6da99);*/
   display: flex;
   flex-direction: column;
@@ -19,19 +21,22 @@ body {
   --oranche-yellow: #FFBB33;
   --yellow: #F9F871;
   --red: #dd000023;
-  --colores: #eaf1d85f;
 }
 
 .header {
-  background-color: var(--oranche-yellow);
-  border-radius: 10px;
-  height: 20vh;
-  width: 100vh;
+  background-color: var(--blue);
+  border-radius: 6px;
   margin-bottom: 15px;
   color: #fff;
-  padding: 10px;
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: 150px;
+  --colores: #eaf1d85f;
 }
+
 
 .img-logo {
   width: 100px;
@@ -65,10 +70,12 @@ body {
   margin-top: 15px;
   color: #fff;
 }
+
 .TOTAL a{
   display: flex;
   justify-content: center;
 }
+
 
 .width {
   width: 100vh;
@@ -80,9 +87,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 
 .center-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   display: flex;
   width: 1320px;
   height: 70px;
@@ -93,6 +104,7 @@ body {
   display: flex;
 }
 
+>>>>>>> Diseño
 .header li ul a {
   text-decoration: none;
   color: #fff;
@@ -101,7 +113,9 @@ body {
   border-radius: 5px;
   box-shadow: 3px 3px 15px black;
   transition: transform 0.2s ease-in-out;
+
   justify-content: center;
+
 }
 
 .header li ul a:hover {
@@ -111,7 +125,13 @@ body {
 .music {
   margin: 0 20px;
   display: flex;
+<<<<<<< HEAD
   margin-left: 680px;
+=======
+
+  margin-left: 700px;
+
+>>>>>>> 074fb69f31fef8c6029b48a52667565bc3d6f2c9
 }
 
 .music button {
@@ -121,13 +141,16 @@ body {
   border-radius: 3px;
   box-shadow: 1px 1px 2px black;
   padding: 0 20px 0 20px;
+
   margin-left: 10px;
+
   transition: transform 0.1s ease-in-out;
 }
 
 .music button:hover {
   transform: scale(1.1);
   background-color: #ec00b9e1;
+
 }
 
 
@@ -168,6 +191,7 @@ body {
   padding-right: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 40px;
+
 }
 
 .inputGroup {
@@ -268,10 +292,10 @@ body {
   border-style: none;
   border-width: 0.125rem;
   border-color: #EF2D56;
+
   -webkit-box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
   -moz-box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
   -box-shadow: 48px 18px 10px -1px rgba(135, 44, 44, 0.5);
-
 }
 
 .example {
@@ -288,10 +312,25 @@ body {
   display: none;
 }
 
+
 /* Hide scrollbar for IE, Edge and Firefox */
 .example {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.imgAlias {
+  padding-left: 30px;
+  padding-bottom: 100px;
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+
 }
