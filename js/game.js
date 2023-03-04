@@ -1,4 +1,8 @@
-//iniciarCronometro();
+iniciarCronometro();
+
+setTimeout(function () {
+    detenerCronometro();
+},60000);
 function randomPosition() {
     const positions = [
         { x: 0, y: 200 },
@@ -208,7 +212,3 @@ draw_nombresAnimales();
 //console.log(orderedPositions);
 
 
-
-setTimeout(function () {
-    //detenerCronometro();
-},60000);
