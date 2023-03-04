@@ -224,7 +224,7 @@ class NombresAnimales extends ElementoJuego {
         ctx.fillText(this.name, this.x + 15, this.y + 30);
     }
 
-    textoFelicitacion() {
+    textoFelicitacion(font) {
         var radius = 10;
 
         ctx.beginPath();
@@ -241,7 +241,7 @@ class NombresAnimales extends ElementoJuego {
         ctx.fillStyle = this.img;
         ctx.fill();
         ctx.fillStyle = 'black';
-        ctx.font = '20px sans-serif';
+        ctx.font = font;
     }
 
     cuadro(x,y) {
@@ -264,5 +264,6 @@ class NombresAnimales extends ElementoJuego {
         ctx.fillStyle = this.img;
         ctx.fill();
     }
+    
 
 }

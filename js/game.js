@@ -67,7 +67,7 @@ function actualizarCronometro() {
         date.getUTCSeconds().toString().padStart(2, "0") + "." +
         date.getUTCMilliseconds().toString().padStart(3, "0");
 
-        localStorage.setItem('Time',parseInt(milisegundos/1000));
+    localStorage.setItem('Time', parseInt(milisegundos / 1000));
 
 }
 
@@ -148,7 +148,7 @@ const is_mouse_in_shape = (x, y, shape) => x > shape.x && x < shape.x + shape.wi
 
 canvas.addEventListener('mousedown', (event) => {
     event.preventDefault();
-    console.log('mousedown');
+
     const offset_x = canvas.getBoundingClientRect().left;
     const offset_y = canvas.getBoundingClientRect().top;
     startX = parseInt(event.clientX - offset_x);
@@ -157,12 +157,11 @@ canvas.addEventListener('mousedown', (event) => {
     for (let shape of nombresAnimales) {
         if (is_mouse_in_shape(startX, startY, shape)) {
             current_shape_index = index;
-            console.log(shape);
-
             is_dragging = true;
-            break;
+
         }
         index++;
+
     }
 });
 
@@ -185,6 +184,11 @@ canvas.addEventListener('mouseout', (event) => {
 canvas.addEventListener('mousemove', (event) => {
     if (!is_dragging) {
         return;
+    }
+    
+    if (is_mouse_in_shape(startX, startY, animals[current_shape_index])) {
+        console.log(animals[current_shape_index]);
+        console.log(true)
     }
     event.preventDefault();
 

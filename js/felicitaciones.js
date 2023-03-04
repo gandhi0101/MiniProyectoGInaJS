@@ -1,9 +1,9 @@
 mostrarGanador = function (x, y){
 
-    textoN = new NombresAnimales('#eaf1d8ff', "Jugador: " + localStorage.getItem('alias'), x, y - 70);
-    textoS = new NombresAnimales('#eaf1d8ff', localStorage.getItem('score'), x + 300, y - 70);
-    textoT = new NombresAnimales('#eaf1d8ff', localStorage.getItem('time'), x + 400, y - 70);
-    textoN.textoFelicitacion(x, y);
+    textoN = new NombresAnimales('#eaf1d800', "Jugador: " + localStorage.getItem('alias'), x, y - 70);
+    textoS = new NombresAnimales('#eaf1d800', localStorage.getItem('score'), x + 300, y - 70);
+    textoT = new NombresAnimales('#eaf1d800', localStorage.getItem('time'), x + 400, y - 70);
+    textoN.textoFelicitacion("40px Arial");
     textoS.CuadroTexto(x, y);
     textoT.CuadroTexto(x, y);
 }
@@ -16,7 +16,7 @@ felicitacion.dibujaFondo();
 setTimeout(function () {
     letreroWin.dibujarImg();
     mostrarGanador(200, 330);
-}, 15);
+}, 150);
 
 
 
