@@ -122,12 +122,12 @@ rand = randomPosition();
 //ctx.globalCompositeOperation = 'destination-out';
 
 const animalData = [
-    { src: "../media/img/Leon.png", name: "Leon" },
-    { src: "../media/assets/Pantalla-principal/chango.png", name: "Mono" },
-    { src: "../media/assets/Pantalla-principal/elefante.png", name: "Elefante" },
-    { src: "../media/assets/Pantalla-principal/zebra.png", name: "Zebra" },
-    { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo" },
-    { src: "../media/img/hiena.png", name: "hiena" },
+    { src: "../media/img/Leon.png", name: "Leon",sound:'../media/sounds/sonido-leon.mp3' },
+    { src: "../media/assets/Pantalla-principal/chango.png", name: "Mono",sound:'../media/sounds/sonido-mono.mp3' },
+    { src: "../media/assets/Pantalla-principal/elefante.png", name: "Elefante",sound:'../media/sounds/sonido-elefante.mp3' },
+    { src: "../media/assets/Pantalla-principal/zebra.png", name: "Zebra",sound:'../media/sounds/sonido-cebra.mp3' },
+    { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo",sound:'../media/sounds/sonido-hipo.mp3' },
+    { src: "../media/img/hiena.png", name: "Hiena" ,sound:'../media/sounds/sonido-hiena.mp3'},
 ];
 
 const AnimalCoord = [];
@@ -143,7 +143,8 @@ for (let i = 0; i < animalData.length; i++) {
         rand[i].x,
         rand[i].y,
         300,
-        200
+        200,
+        animalData[i].sound
     );
     let animales = new NombresAnimales('#EAF1D8', animalData[i].name, animal.x + 60, animal.y - 60);
     let NombreAnimales = new NombresAnimales('#EAF1D8', animalData[i].name, 160 * (i + 1), 10);
