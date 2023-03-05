@@ -1,25 +1,26 @@
-// iniciarCronometro();
-// setTimeout(function () {
-//     detenerCronometro();
-// },60000);
-localStorage.setItem("score",0);
+iniciarCronometro();
+setTimeout(function () {
+    detenerCronometro();
+}, 60000);
+
+localStorage.setItem("score", 0);
 actualizarScore(50);
 var screenWidth = window.innerWidth;
 
 // Verificar si hay un valor de zoom establecido en el elemento body
 var currentZoom = document.body.style.zoom;
 if (currentZoom === "") {
-  // Si no hay un valor de zoom establecido, establecer el zoom en función del ancho de la pantalla
-  if (screenWidth > 1200) {
-    // Pantallas grandes: 100% de zoom
-    document.body.style.zoom = "100%";
-  } else if (screenWidth > 768) {
-    // Pantallas medianas: 80% de zoom
-    document.body.style.zoom = "80%";
-  } else {
-    // Pantallas pequeñas: 60% de zoom
-    document.body.style.zoom = "60%";
-  }
+    // Si no hay un valor de zoom establecido, establecer el zoom en función del ancho de la pantalla
+    if (screenWidth > 1200) {
+        // Pantallas grandes: 100% de zoom
+        document.body.style.zoom = "100%";
+    } else if (screenWidth > 768) {
+        // Pantallas medianas: 80% de zoom
+        document.body.style.zoom = "80%";
+    } else {
+        // Pantallas pequeñas: 60% de zoom
+        document.body.style.zoom = "60%";
+    }
 }
 
 function randomPosition() {
@@ -122,12 +123,12 @@ rand = randomPosition();
 //ctx.globalCompositeOperation = 'destination-out';
 
 const animalData = [
-    { src: "../media/img/Leon.png", name: "Leon",sound:'../media/sounds/sonido-leon.mp3' },
-    { src: "../media/assets/Pantalla-principal/chango.png", name: "Mono",sound:'../media/sounds/sonido-mono.mp3' },
-    { src: "../media/assets/Pantalla-principal/elefante.png", name: "Elefante",sound:'../media/sounds/sonido-elefante.mp3' },
-    { src: "../media/assets/Pantalla-principal/zebra.png", name: "Zebra",sound:'../media/sounds/sonido-cebra.mp3' },
-    { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo",sound:'../media/sounds/sonido-hipo.mp3' },
-    { src: "../media/img/hiena.png", name: "Hiena" ,sound:'../media/sounds/sonido-hiena.mp3'},
+    { src: "../media/img/Leon.png", name: "Leon", sound: '../media/sounds/sonido-leon.mp3' },
+    { src: "../media/assets/Pantalla-principal/chango.png", name: "Mono", sound: '../media/sounds/sonido-mono.mp3' },
+    { src: "../media/assets/Pantalla-principal/elefante.png", name: "Elefante", sound: '../media/sounds/sonido-elefante.mp3' },
+    { src: "../media/assets/Pantalla-principal/zebra.png", name: "Zebra", sound: '../media/sounds/sonido-cebra.mp3' },
+    { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo", sound: '../media/sounds/sonido-hipo.mp3' },
+    { src: "../media/img/hiena.png", name: "Hiena", sound: '../media/sounds/sonido-hiena.mp3' },
 ];
 
 const AnimalCoord = [];
@@ -232,6 +233,9 @@ canvas.addEventListener('mouseup', (event) => {
 
                 }
                 localStorage.setItem('score', score);
+                var audio = new Audio('../media/sounds/Pou-No.mp3');
+                audio.play();
+                break;
             }
         }
     }
