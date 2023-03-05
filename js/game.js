@@ -215,28 +215,33 @@ canvas.addEventListener('mouseup', (event) => {
     let score = parseInt(localStorage.getItem('score'))
     if (is_mouse_in_shape(startX, startY + 60, animals[current_shape_index])) {
         console.log(true)
+        //establecemos un valor predeterminado
         nombresAnimales[current_shape_index].x = Animales[current_shape_index].x;
         nombresAnimales[current_shape_index].y = Animales[current_shape_index].y;
+        //lo dibuja y aumenta puntos
         draw_nombresAnimales();
         score += 50;
         localStorage.setItem('score', score);
         animals[current_shape_index].audio();
+        //si el contador llega a 6 se muestra un boton para terminar
         contadordeanimales+=1;
         termino();
     }
     for (var i = 0; i < 6; i++) {
-        if (i != current_shape_index) {
+        if (i != current_shape_index) {// revisa si es el animal correcto
             if (is_mouse_in_shape(startX, startY, animals[i])) {
                 console.log(false);
                 nombresAnimales[current_shape_index].x = 160 * (current_shape_index + 1)
                 nombresAnimales[current_shape_index].y = 10;
                 draw_nombresAnimales();
+                //resta 20 puntos al score no acptamos valores negativos
                 score -= 20;
                 if (score < 0) {
                     score = 0;
 
                 }
                 localStorage.setItem('score', score);
+                ///y se reproduce el audo 
                 var audio = new Audio('../media/sounds/Pou-No.mp3');
                 audio.play();
                 break;

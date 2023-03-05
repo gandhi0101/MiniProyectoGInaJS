@@ -367,3 +367,22 @@ class NombresAnimales extends ElementoJuego {
     ctx.fill();
   }
 }
+function pausar() {
+  const audio = document.getElementById("miAudio");
+  const btnMusica = document.getElementById("btnMusica");
+  
+  if (audio.paused) {
+    audio.play();
+    btnMusica.innerHTML = "&#10074;&#10074;";
+  } else {
+    audio.pause();
+    btnMusica.innerHTML = "&#9658;";
+  }
+}
+
+function cambiarVolumen() {
+  const audio = document.getElementById("miAudio");
+  const volumen = document.getElementById("volumen").value;
+  
+  audio.volume = volumen;
+}
