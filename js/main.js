@@ -1,5 +1,3 @@
-
-
 const persona = new User();
 
 if (window.location.pathname.split('/').pop() === 'index.html') {
@@ -17,7 +15,7 @@ if (window.location.pathname.split('/').pop() === 'index.html') {
         empezar.dibujarImg();
         exit.dibujarImg();
     });
-
+    exit.time = 0;
     exit.botonPresionado('../media/sounds/hasta_luegor.mp3', '../ingresarAlias.html')
 
     empezar.botonPresionado('../media/sounds/vamos_a_empezar.mp3', "../game.html")

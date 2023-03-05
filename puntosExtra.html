@@ -8,7 +8,9 @@
         <!--Favicon-->
         <link rel="shortcut icon" href="media/img/favicon.png" type="image/">
         <!--Stylesheets-->
+        <link rel="stylesheet" href="css/stylePuntos.css">
         <link rel="stylesheet" href="css/style.css">
+        <!-- Scripts -->
     </head>
     <body>
         <header class="TOTAL">
@@ -18,15 +20,15 @@
                 </div></a>
 
                 <li>
-                  <ul>
-                    <a href="index.html" class="btn-Menu">Juego</a>
-                  </ul>
-                <ul>
-                    <a href="creditos.html" class="btn-Menu">Creditos</a>
-                </ul>
-                <ul>
-                    <a href="Score.html" class="btn-Menu">High Score</a>
-                </ul>
+                    <ul>
+                        <a href="index.html" class="btn-Menu">Juego</a>
+                    </ul>
+                    <ul>
+                        <a href="creditos.html" class="btn-Menu">Creditos</a>
+                    </ul>
+                    <ul>
+                        <a href="Score.html" class="btn-Menu">High Score</a>
+                    </ul>
                 </li>
                 <div class="music">
                     <!--<audio id="miAudio"
@@ -43,13 +45,19 @@
             </div>
         </header>
         <section class="TOTAL">
-            <div class="sec">               
-                <canvas id="mi-canvas-score"></canvas>
-                <div id="imgs"></div>
+            <div class="sec">
+                <div id="cuadro1" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+
+                    <div class="cuadradito" id="arrastrable1" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                        1
+                    </div>
+                </div>
+                <div id="cuadro2" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)"></div>
             </div>
         </section>
     </body>
     <script src="js/clases.js"></script>
-    <script src="/js/Score.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/ApiDragDrop.js"></script>
 
 </html>
