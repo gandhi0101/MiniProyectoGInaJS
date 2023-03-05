@@ -2,6 +2,7 @@ iniciarCronometro();
 setTimeout(function () {
     detenerCronometro();
 }, 60000);
+var contadordeanimales = 0;
 
 localStorage.setItem("score", 0);
 actualizarScore(50);
@@ -131,8 +132,8 @@ const animalData = [
     { src: "../media/img/hiena.png", name: "Hiena", sound: '../media/sounds/sonido-hiena.mp3' },
 ];
 
-const AnimalCoord = [];
-const coord = [];
+
+
 
 const Animales = [];
 const nombresAnimales = [];
@@ -158,12 +159,8 @@ for (let i = 0; i < animalData.length; i++) {
 
 setTimeout(function () {
     exit.dibujarImg();
-    ready.dibujarImg();
+    
     for (let i = 0; i < 6; i++) {
-
-        AnimalCoord[i] = [{ nombre: animals[i].name, coordX: animals[i].x, coordY: animals[i].y }]
-
-
         window.addEventListener('load', function () {
             animals[i].draw();
             Animales[i].Cuadro();
@@ -171,12 +168,17 @@ setTimeout(function () {
 
     }
 
-    localStorage.setItem("CoordAnimal", JSON.stringify(AnimalCoord));
 
     exit.botonPresionado('../media/sounds/hasta_luego.mp3', '../index.html');
-    ready.botonPresionado('../media/sounds/Como_te_fue.mp3', '../valida.html');
+
 }, 600);
 
+function termino(){
+    if(contadordeanimales === 6){
+        ready.dibujarImg();
+        ready.botonPresionado('../media/sounds/Como_te_fue.mp3', '../valida.html');
+    }
+}
 
 //let shape =  nombresAnimales;
 
@@ -219,6 +221,8 @@ canvas.addEventListener('mouseup', (event) => {
         score += 50;
         localStorage.setItem('score', score);
         animals[current_shape_index].audio();
+        contadordeanimales+=1;
+        termino();
     }
     for (var i = 0; i < 6; i++) {
         if (i != current_shape_index) {
@@ -272,7 +276,6 @@ canvas.addEventListener('mousemove', (event) => {
     current_shape.y += dy;
     draw_nombresAnimales();
 
-    coord[current_shape_index] = [{ nombre: nombresAnimales[current_shape_index].name, coordX: nombresAnimales[current_shape_index].x - 60, coordY: nombresAnimales[current_shape_index].y + 60 }]
     startX = mouseX;
     startY = mouseY;
 
@@ -286,7 +289,7 @@ const draw_nombresAnimales = () => {
     setTimeout(function () {
         exit.dibujarImg();
         for (let i = 0; i < 6; i++) {
-            ready.dibujarImg();
+            
             animals[i].draw();
             Animales[i].Cuadro();
         }
@@ -303,9 +306,10 @@ const draw_nombresAnimales = () => {
 
 
     }, 150);
-    localStorage.setItem('coord', JSON.stringify(coord))
-};
-//console.log(JSON.stringify(coord));
+}
+    
+
+    
 draw_nombresAnimales();
 
 //const orderedPositions = randomPosition();
