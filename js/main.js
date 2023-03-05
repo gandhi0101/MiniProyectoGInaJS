@@ -1,5 +1,3 @@
-
-
 const persona = new User();
 
 if (window.location.pathname.split('/').pop() === 'index.html') {

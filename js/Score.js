@@ -32,7 +32,7 @@ const score = new Fondo("../media/assets/Pantalla-score/fondo.png", 0, 0, 850, 7
 const marco = new Fondo("../media/assets/Pantalla-score/zyro-image (2).png", -10, -80, 850, 700, 'mi-canvas-score');
 const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
 
-exit.time=0;
+exit.time = 0;
 
 score.dibujaFondo();
 setTimeout(function () {
@@ -48,6 +48,6 @@ setTimeout(function () {
 
 }, 300);
 
-exit.botonPresionado('../media/sounds/hasta_luegor.mp3',"../index.html");
+exit.botonPresionado('../media/sounds/hasta_luegor.mp3', "../index.html");
 
 

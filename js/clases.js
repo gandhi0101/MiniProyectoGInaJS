@@ -172,9 +172,10 @@ class Animal extends ElementoJuego {
   name;
   sound;
 
-  constructor(img, name, x, y, width, height) {
+  constructor(img, name, x, y, width, height,sound) {
     super(x, y, width, height, img);
     this.name = name;
+    this.sound = sound;
   }
 
   draw() {
@@ -184,7 +185,10 @@ class Animal extends ElementoJuego {
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y - 20, this.width, this.height);
   }
-  
+  audio(){
+    var audio = new Audio(this.sound);
+    audio.play();
+  }
 }
 class NombresAnimales extends ElementoJuego {
   constructor(color, name, x, y) {
