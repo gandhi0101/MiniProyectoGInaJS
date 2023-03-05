@@ -30,4 +30,4 @@ function valida() {
     localStorage.setItem("usuarios", JSON.stringify(usuariosJSON));
 }
 
-valida();
+

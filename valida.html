@@ -8,6 +8,8 @@
         <!--Favicon-->
         <link rel="shortcut icon" href="media/img/favicon.png" type="image/">
         <!--Stylesheets-->
+        <link rel="stylesheet" href="css/stylePuntos.css">
+
         <link rel="stylesheet" href="css/style.css">
         <!-- Scripts -->
     </head>
@@ -29,7 +31,25 @@
                         <a href="Score.html" class="btn-Menu">High Score</a>
                     </ul>
                 </li>
+            </div>
+        </header>
+        <section class="TOTAL">
+            <h1 style="margin: 0; background: #ffffff99; padding: 10px; border-radius: 5px;">Para ganar 10 puntos mueve el leon al cuadro verde</h1>
+            <div class="sec">
+                
+                <h1 id="Score"></h1>
+                <div id="cuadro1" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
 
+                    <div class="cuadradito" id="arrastrable1" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                        1
+                    </div>
+                </div>
+                <div id="cuadro2" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)"></div>
+ 
+                <div id="imgs"></div>
+            </div>
+        </section>
 
     <script src="js/clases.js"></script>
     <script src="js/valida.js"></script>
+    <script src="js/ApiDragDrop.js"></script>

@@ -1,13 +1,15 @@
 #cuadro1, #cuadro2, #cuadro3, #papelera {
     float: left;
-    width: 90px;
-    height: 90px;
+    width: 200px;
+    height: 200px;
     padding: 10px;
-    margin: 10px;
+    margin: 100px;
 }
 
 #cuadro1{
     background: #55f;
+    
+
 }
 
 #cuadro2 {
@@ -29,9 +31,17 @@
     height: 5px;
     padding: 0 10px 15px;
     margin: 5px;
+
+    
+
 }
 
 #arrastrable1 {
     background: #228;
-    border: 2px solid #822;
+    width: 100px;
+    height: 100px;
+    background-image: url(../media/assets/Pantalla-principal/leon.png);
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: center;
 }

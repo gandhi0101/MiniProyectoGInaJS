@@ -36,7 +36,13 @@ function drop(e) {
 
   if ((e.target.id == "cuadro2")) {
     console.log("elemento soltado");
-
+    let score;
+    score = parseInt(localStorage.getItem('score'));
+    score += 10;
+    localStorage.setItem('score', score);
+    valida();
+   
+    console.log("score=" + score);
     e.target.appendChild(document.getElementById(elementoArrastrado));
     e.target.style.border = ""; // Quita el borde
 
@@ -78,5 +84,6 @@ function drop(e) {
       del cursor y realizar en esa posicion el soltado*/
 
     document.getElementById(elementoArrastrado).style.position = "absolute";
+    window.location.replace("../felicitaciones.html");
   }
 }
