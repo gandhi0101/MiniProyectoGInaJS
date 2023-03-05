@@ -212,7 +212,7 @@ canvas.addEventListener('mouseup', (event) => {
         draw_nombresAnimales();
         score += 50;
         localStorage.setItem('score', score);
-        animals[current_shape_index].
+        animals[current_shape_index].audio();
     }
     for (var i = 0; i < 6; i++) {
         if (i != current_shape_index) {
