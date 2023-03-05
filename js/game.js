@@ -4,6 +4,19 @@
 // },60000);
 localStorage.setItem("score",0);
 actualizarScore(50);
+var screenWidth = window.innerWidth;
+
+// Establecer el zoom en función del ancho de la pantalla
+if (screenWidth > 1200) {
+  // Pantallas grandes: 100% de zoom
+  document.body.style.zoom = "100%";
+} else if (screenWidth > 768) {
+  // Pantallas medianas: 80% de zoom
+  document.body.style.zoom = "80%";
+} else {
+  // Pantallas pequeñas: 60% de zoom
+  document.body.style.zoom = "60%";
+}
 
 function randomPosition() {
     const positions = [
@@ -199,6 +212,7 @@ canvas.addEventListener('mouseup', (event) => {
         draw_nombresAnimales();
         score += 50;
         localStorage.setItem('score', score);
+        animals[current_shape_index].
     }
     for (var i = 0; i < 6; i++) {
         if (i != current_shape_index) {
