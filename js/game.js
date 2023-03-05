@@ -6,16 +6,20 @@ localStorage.setItem("score",0);
 actualizarScore(50);
 var screenWidth = window.innerWidth;
 
-// Establecer el zoom en función del ancho de la pantalla
-if (screenWidth > 1200) {
-  // Pantallas grandes: 100% de zoom
-  document.body.style.zoom = "100%";
-} else if (screenWidth > 768) {
-  // Pantallas medianas: 80% de zoom
-  document.body.style.zoom = "80%";
-} else {
-  // Pantallas pequeñas: 60% de zoom
-  document.body.style.zoom = "60%";
+// Verificar si hay un valor de zoom establecido en el elemento body
+var currentZoom = document.body.style.zoom;
+if (currentZoom === "") {
+  // Si no hay un valor de zoom establecido, establecer el zoom en función del ancho de la pantalla
+  if (screenWidth > 1200) {
+    // Pantallas grandes: 100% de zoom
+    document.body.style.zoom = "100%";
+  } else if (screenWidth > 768) {
+    // Pantallas medianas: 80% de zoom
+    document.body.style.zoom = "80%";
+  } else {
+    // Pantallas pequeñas: 60% de zoom
+    document.body.style.zoom = "60%";
+  }
 }
 
 function randomPosition() {
