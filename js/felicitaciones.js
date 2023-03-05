@@ -1,10 +1,10 @@
 mostrarGanador = function (x, y){
     var fondoGanador = new NombresAnimales("#eaf1d8aa", "", 110, 130);
-    fondoGanador.cuadroFondo(610, 320);
+    fondoGanador.cuadroFondo(610, 500);
 
     textoN = new NombresAnimales('#eaf1d800', "Jugador: " + localStorage.getItem('alias'), 130, 230);
     textoS = new NombresAnimales('#eaf1d800', "Puntuacion: " + localStorage.getItem('score'), 500, 230);
-    textoT = new NombresAnimales('#eaf1d800', "Tiempo tardado: " + localStorage.getItem('time'), x + 50, 350);
+    textoT = new NombresAnimales('#eaf1d800', "Tiempo tardado: " + localStorage.getItem('Time'), x + 50, 350);
     textoN.textoFelicitacion("30px Arial");
     textoS.textoFelicitacion("30px Arial");
     textoT.textoFelicitacion("30px Arial");
@@ -20,8 +20,8 @@ setTimeout(function () {
     letreroWin.dibujarImg();
     mostrarGanador(200, 330);
     exit.dibujarImg();
-}, 150);
+}, 220);
 
 
 
-exit.botonPresionado('../media/sounds/hasta_luegor.mp3', '../ingresarAlias.html')
+exit.botonPresionado('../media/sounds/hasta_luegor.mp3', '../Score.html')

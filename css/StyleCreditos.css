@@ -112,10 +112,6 @@ body {
 
 
 .contenedor {
-    width: 90%;
-    max-width: 1000px;
-    margin: 20px auto;
-
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
@@ -137,6 +133,9 @@ body {
     border-radius: 4px;
 }
 
+.contenedor {
+    width: 80%;
+}
 
 .contenedor .contenido {
     grid-area: contenido;
@@ -190,6 +189,6 @@ body {
     }
 }
 
-.contenido h1{
+.contenido h1 {
     text-align: center;
 }

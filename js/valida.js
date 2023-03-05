@@ -28,6 +28,7 @@ function valida() {
     }
     console.log(JSON.stringify(usuariosJSON));
     localStorage.setItem("usuarios", JSON.stringify(usuariosJSON));
+    window.location.replace("../felicitaciones.html");
 }
 
 

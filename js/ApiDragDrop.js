@@ -84,6 +84,6 @@ function drop(e) {
       del cursor y realizar en esa posicion el soltado*/
 
     document.getElementById(elementoArrastrado).style.position = "absolute";
-    window.location.replace("../felicitaciones.html");
+    
   }
 }
