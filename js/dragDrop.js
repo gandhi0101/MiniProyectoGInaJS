@@ -86,19 +86,3 @@ const draw_nombresAnimales = () => {
 draw_nombresAnimales();
 
 
-function cargarAlgo() {
-    return new Promise(function (resolve, reject) {
-        for (let index = 0; index < 100; index++) {
-
-            console.log(index.toString());
-        }
-    });
-}
-
-function ejecutarOtrasInstrucciones() {
-    console.log("Otras instrucciones ejecutasssssssssssssssssssssssssssssssdas");
-}
-
-// Llamamos a la función cargarAlgo y usamos el método then para ejecutar la función ejecutarOtrasInstrucciones una vez que la carga ha finalizado
-cargarAlgo().then(ejecutarOtrasInstrucciones);
-console.log("hola");
