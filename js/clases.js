@@ -51,26 +51,26 @@ class User {
 
     usuariosJSON = JSON.parse(localStorage.getItem("usuarios")) || []; // Inicializa usuariosJSON como un array vacío si el almacenamiento local está vacío
     const nuevoUsuario = {
-        alias: localStorage.getItem("alias"),
-        score: localStorage.getItem("score"),
-        tiempo: localStorage.getItem("tiempo"),
+      alias: localStorage.getItem("alias"),
+      score: localStorage.getItem("score"),
+      tiempo: localStorage.getItem("tiempo"),
     };
     let usuarioExistente = false;
-    
+
     for (const usuario of usuariosJSON) {
-        if (usuario.alias === nuevoUsuario.alias) {
-            usuarioExistente = true;
-            break;
-        }
+      if (usuario.alias === nuevoUsuario.alias) {
+        usuarioExistente = true;
+        break;
+      }
     }
-    
+
     if (!usuarioExistente) {
-        usuariosJSON.push(nuevoUsuario);
-        localStorage.setItem("usuarios", JSON.stringify(usuariosJSON));
+      usuariosJSON.push(nuevoUsuario);
+      localStorage.setItem("usuarios", JSON.stringify(usuariosJSON));
     }
-    
+
     console.log(usuariosJSON); // Imprime el objeto usuariosJSON en la consola
-    
+
   };
   saluda() { }
 
@@ -172,7 +172,7 @@ class Animal extends ElementoJuego {
   name;
   sound;
 
-  constructor(img, name, x, y, width, height,sound) {
+  constructor(img, name, x, y, width, height, sound) {
     super(x, y, width, height, img);
     this.name = name;
     this.sound = sound;
@@ -185,7 +185,7 @@ class Animal extends ElementoJuego {
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y - 20, this.width, this.height);
   }
-  audio(){
+  audio() {
     var audio = new Audio(this.sound);
     audio.play();
   }
@@ -370,7 +370,7 @@ class NombresAnimales extends ElementoJuego {
 function pausar() {
   const audio = document.getElementById("miAudio");
   const btnMusica = document.getElementById("btnMusica");
-  
+
   if (audio.paused) {
     audio.play();
     btnMusica.innerHTML = "&#10074;&#10074;";
@@ -383,6 +383,17 @@ function pausar() {
 function cambiarVolumen() {
   const audio = document.getElementById("miAudio");
   const volumen = document.getElementById("volumen").value;
-  
+
   audio.volume = volumen;
 }
+window.addEventListener("beforeunload", function () {
+  const audio = document.getElementById("miAudio");
+  localStorage.setItem("currentTime", audio.currentTime);
+});
+window.addEventListener("load", function () {
+  const audio = document.getElementById("miAudio");
+  const currentTime = localStorage.getItem("currentTime");
+  if (currentTime) {
+    audio.currentTime = currentTime;
+  }
+});
