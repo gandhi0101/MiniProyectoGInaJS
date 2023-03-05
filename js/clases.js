@@ -49,24 +49,28 @@ class User {
     }
     let usuariosJSON = [];
 
-    // Agrega todos los usuarios del almacenamiento local al objeto usuariosJSON
-    const usuariosLocalStorage = localStorage.getItem("usuarios");
-    if (usuariosLocalStorage) {
-      usuariosJSON = Object.assign(
-        usuariosJSON,
-        JSON.parse(usuariosLocalStorage)
-      );
+    usuariosJSON = JSON.parse(localStorage.getItem("usuarios")) || []; // Inicializa usuariosJSON como un array vacío si el almacenamiento local está vacío
+    const nuevoUsuario = {
+        alias: localStorage.getItem("alias"),
+        score: localStorage.getItem("score"),
+        tiempo: localStorage.getItem("tiempo"),
+    };
+    let usuarioExistente = false;
+    
+    for (const usuario of usuariosJSON) {
+        if (usuario.alias === nuevoUsuario.alias) {
+            usuarioExistente = true;
+            break;
+        }
     }
-    usuariosJSON.push({
-      alias: localStorage.getItem("alias"),
-      score: localStorage.getItem("score"),
-      tiempo: localStorage.getItem("tiempo"),
-    });
-
-    // Guarda el objeto usuariosJSON en el almacenamiento local
-    localStorage.setItem("usuarios", JSON.stringify(usuariosJSON));
-    // Imprime el objeto usuariosJSON en la consola
-    console.log(us);
+    
+    if (!usuarioExistente) {
+        usuariosJSON.push(nuevoUsuario);
+        localStorage.setItem("usuarios", JSON.stringify(usuariosJSON));
+    }
+    
+    console.log(usuariosJSON); // Imprime el objeto usuariosJSON en la consola
+    
   };
   saluda() { }
 
@@ -117,6 +121,7 @@ class Fondo extends ElementoJuego {
 }
 
 class Botones extends ElementoJuego {
+  time;
   texto;
   fondo; //en caso de img se usa dibujarimg de lo contrario dibujar(cuadrado)
   // url     o    color
@@ -124,6 +129,7 @@ class Botones extends ElementoJuego {
     super(x - width / 2, y - height / 2, width, height, fondo);
     this.texto = texto;
     this.fondo = fondo;
+    this.time = 2500;
   }
 
   dibujarImg() {
@@ -156,7 +162,7 @@ class Botones extends ElementoJuego {
         }
         setTimeout(function () {
           window.location.replace(urlDireccion);
-        }, 2500);
+        }, this.time);
       }
     });
   }
@@ -178,6 +184,7 @@ class Animal extends ElementoJuego {
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y - 20, this.width, this.height);
   }
+  
 }
 class NombresAnimales extends ElementoJuego {
   constructor(color, name, x, y) {

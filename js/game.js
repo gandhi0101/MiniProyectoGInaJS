@@ -2,6 +2,8 @@
 // setTimeout(function () {
 //     detenerCronometro();
 // },60000);
+localStorage.setItem("score",0);
+actualizarScore(50);
 
 function randomPosition() {
     const positions = [
@@ -71,12 +73,27 @@ function actualizarCronometro() {
     localStorage.setItem('Time', parseInt(milisegundos / 1000));
 
 }
+function actualizarScore(score) {
+    let usersJSON = localStorage.getItem('usuarios');
+    let alias = localStorage.getItem('alias');
+    usersJSON = JSON.parse(usersJSON);
+    for (const user of usersJSON) {
+        if (user.alias === alias) {
+            if (user.score < score) {
+                user.score = score;
+                localStorage.setItem('usuarios', JSON.stringify(usersJSON));
+                break;
+            }
+            break;
+        }
+    }
+}
 
 const persona = new User;
 
 const play = new Fondo("../media/assets/Pantalla-principal/fondo-principal.png", 0, 0, 3840 / 3, 2160 / 3, "game");
 const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
-
+exit.time = 0;
 const ready = new Botones('', 1200, 45, 100, 75, "../media/assets/Pantalla-alias/aceptar.png")
 //
 // hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
@@ -175,7 +192,7 @@ canvas.addEventListener('mouseup', (event) => {
     }
     event.preventDefault();
     let score = parseInt(localStorage.getItem('score'))
-    if (is_mouse_in_shape(startX, startY+60, animals[current_shape_index])) {
+    if (is_mouse_in_shape(startX, startY + 60, animals[current_shape_index])) {
         console.log(true)
         nombresAnimales[current_shape_index].x = Animales[current_shape_index].x;
         nombresAnimales[current_shape_index].y = Animales[current_shape_index].y;
@@ -199,6 +216,7 @@ canvas.addEventListener('mouseup', (event) => {
             }
         }
     }
+    actualizarScore(score);
     is_dragging = false;
     console.log(score);
 });

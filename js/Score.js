@@ -15,7 +15,7 @@ function MostraScore(x, y) {
     textoN.CuadroTexto(x, y);
     textoS.CuadroTexto(x, y);
     textoT.CuadroTexto(x, y);
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < Math.min(usersJSON.length, 5); i++) {
 
         textoN = new NombresAnimales('#eaf1d8cf', usersJSON[i].alias, x, y + (80 * i + 1));
 
@@ -32,6 +32,7 @@ const score = new Fondo("../media/assets/Pantalla-score/fondo.png", 0, 0, 850, 7
 const marco = new Fondo("../media/assets/Pantalla-score/zyro-image (2).png", -10, -80, 850, 700, 'mi-canvas-score');
 const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
 
+exit.time=0;
 
 score.dibujaFondo();
 setTimeout(function () {
