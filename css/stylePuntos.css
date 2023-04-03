@@ -1,0 +1,47 @@
+#cuadro1, #cuadro2, #cuadro3, #papelera {
+    float: left;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    margin: 100px;
+}
+
+#cuadro1{
+    background: #55f;
+    
+
+}
+
+#cuadro2 {
+    background: #5f5;
+}
+
+#cuadro3 {
+    background: #f55;
+}
+
+#papelera {
+    background: #5ff;
+}
+
+.cuadradito {
+    background: #288;
+    border: 2px solid #882;
+    width: 5px;
+    height: 5px;
+    padding: 0 10px 15px;
+    margin: 5px;
+
+    
+
+}
+
+#arrastrable1 {
+    background: #228;
+    width: 100px;
+    height: 100px;
+    background-image: url(../media/assets/Pantalla-principal/leon.png);
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

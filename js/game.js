@@ -1,289 +1,28 @@
-canvas = [];
-ctx = [];
-
-class User {
-    #alias;
-    #score;
-    usuarios;
-
-    constructor() {
-        localStorage.removeItem('hasRedirected2');
-        const alias = localStorage.getItem('alias');
-        const score = localStorage.getItem('score');
-        let hasRedirected = localStorage.getItem('hasRedirected');
-
-        if (!alias) {
-            console.log('No tiene Usuario(alias) :(');
-
-            if (!hasRedirected) {
-                localStorage.setItem('hasRedirected', true);
-                window.location.replace('../ingresarAlias.html');
-
-            }
-        } else {
-            this.#alias = alias;
-            this.#score = score;
-            this.saluda();
-        }
-
-        console.log(this.#alias + '\n' + this.#score);
-    }
-
-    ingresaAlias = function () {
-        localStorage.removeItem('hasRedirected');
-        const inputAlias = document.getElementById('inputAlias');
-        const alias = inputAlias.value;
-        const score = 0;
-
-        // Obtener el objeto JSON actual del localStorage
-        let usuariosJSON = localStorage.getItem('usuarios');
-        let usuarios = [];
-
-        // Si ya existe un objeto JSON en el localStorage, convertirlo en un objeto JavaScript
-        if (usuariosJSON) {
-            usuarios = JSON.parse(usuariosJSON);
-        }
-
-        // Agregar el nuevo alias y score al objeto JavaScript
-        usuarios.push({ alias, score });
-
-        // Convertir el objeto JavaScript en un objeto JSON y guardarlo en el localStorage
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-        console.log(alias);
-
-        let hasRedirected = localStorage.getItem('hasRedirected');
-        if (!hasRedirected) {
-            localStorage.setItem('hasRedirected2', true);
-            window.location.replace('../');
-        }
-    }
-
-    saluda() {
-
-    }
-    EliminarAlias() {
-        localStorage.removeItem('alias');
-        localStorage.removeItem('score');
-    }
-
-}
-class ElementoJuego {
-    x;
-    y;
-    width;
-    height;
-    img;// ruta de imagen o color
-
-    constructor(x, y, width, height, img) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.img = img;
-    }
-
-    draw() {
-        const imgElemento = new Image();
-        imgElemento.src = this.img;
-        const self = this
-
-        imgElemento.onload = function () {
-            ctx.drawImage(imgElemento, self.x, self.y, self.width, self.height);
-        }
-    }
-
-}
-
-class Fondo extends ElementoJuego {
-    constructor(img, x, y, idCanvas) {
-        super(x, y, 3840 / 3, 2160 / 3, img);
-        canvas = document.getElementById(idCanvas);
-        ctx = canvas.getContext('2d');
-        canvas.width = 3840 / 3;
-        canvas.height = 2160 / 3;
-    }
-
-    dibujaFondo() {
-        super.draw();
-    }
-    clear() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height); // borrar la imagen del botón
-
-    }
-}
-
-class Botones extends ElementoJuego {
-    texto;
-    fondo;//en caso de img se usa dibujarimg de lo contrario dibujar(cuadrado) 
-    // url     o    color
-    constructor(texto, x, y, width, height, fondo) {
-        super(x - (width / 2), y - (height / 2), width, height, fondo);
-        this.texto = texto;
-        this.fondo = fondo;
-    }
-
-    dibujarImg() {
-        super.draw();
-    }
-
-    dibujar() {
-        ctx.fillStyle = this.fondo;
-        ctx.fillRect(100, 70, 130, 50);
-    }
-
-    botonPresionado(urlAudio, urlDireccion) {
-        const self = this;
-
-        canvas.addEventListener('click', function (event) {
-            //console.log(event.offsetX+"  "+event.offsetY+"\n"+ self.x+"  " +self.y);
-            if (event.offsetX > self.x && event.offsetX < self.x + self.width && event.offsetY > self.y && event.offsetY < self.y + self.height) {
-                console.log('Botón presionado');
-                canvas.removeEventListener('click', event);
-                var audio = new Audio(urlAudio);
-                audio.play();
-                window.location.replace(urlDireccion);
-
-            }
-        });
-    }
-
-}
-
-
-class Animal extends ElementoJuego {
-    name;
-    sound;
-
-    constructor(img, name, x, y, width, height) {
-        super(x, y, width, height, img);
-        this.name = name;
-        console.log(this.name);
-    }
-
-    draw() {
-        super.draw();
-
-    }
-    cuadro(color) {
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y - 20, this.width, this.height);
-    }
-}
-class NombresAnimales extends ElementoJuego {
-
-    constructor(color, name, x, y) {
-        super(x + 60, y - 60, ((canvas.width - 100) / 6) - 10, 60, color,)
-        this.name = name;
-    }
-    Cuadro() {
-        /*ctx.fillStyle = this.img;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.fillText("hola guapos", this.x + 5, this.y + 5);*/
-        var radius = 20;
-
-        ctx.beginPath();
-        ctx.moveTo(this.x + radius, this.y);
-        ctx.lineTo(this.x + this.width - radius, this.y);
-        ctx.arcTo(this.x + this.width, this.y, this.x + this.width, this.y + radius, radius);
-        ctx.lineTo(this.x + this.width, this.y + this.height - radius);
-        ctx.arcTo(this.x + this.width, this.y + this.height, this.x + this.width - radius, this.y + this.height, radius);
-        ctx.lineTo(this.x + radius, this.y + this.height);
-        ctx.arcTo(this.x, this.y + this.height, this.x, this.y + this.height - radius, radius);
-        ctx.lineTo(this.x, this.y + radius);
-        ctx.arcTo(this.x, this.y, this.x + radius, this.y, radius);
-
-        ctx.fillStyle = this.img;
-        ctx.fill();
-    }
-
-    arrastrar() {
-        //if()
-    }
-    soltar() {
-
-    }
-    CuadroTexto(x, y,) {
-        let width = 150;
-        let height = 70;
-
-
-        var radius = 20;
-
-        ctx.beginPath();
-        ctx.moveTo(x + radius, y);
-        ctx.lineTo(x + width - radius, y);
-        ctx.arcTo(x + width, y, x + width, y + radius, radius);
-        ctx.lineTo(x + width, y + height - radius);
-        ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
-        ctx.lineTo(x + radius, y + height);
-        ctx.arcTo(x, y + height, x, y + height - radius, radius);
-        ctx.lineTo(x, y + radius);
-        ctx.arcTo(x, y, x + radius, y, radius);
-
-        ctx.fillStyle = this.img;
-        ctx.fill();
-        ctx.fillStyle = 'black';
-        ctx.font = '15px sans-serif';
-        ctx.fillText(this.name, x + 10, y + 25);
-    }
-
-}
-
-const persona = new User;
-
-const play = new Fondo("../media/assets/Pantalla-principal/fondo-principal.png", 0, 0, "game");
-const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
-//
-// hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
-// hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
-// hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
-// hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
-play.dibujaFondo();
-rand = randomPosition();
-
-const animalData = [
-    { src: "../media/img/Leon.png", name: "Leon" },
-    { src: "../media/assets/Pantalla-principal/chango.png", name: "Mono" },
-    { src: "../media/assets/Pantalla-principal/elefante.png", name: "Elefante" },
-    { src: "../media/assets/Pantalla-principal/zebra.png", name: "Zebra" },
-    { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo" },
-    { src: "../media/img/Rinoceronte.png", name: "Rinoceronte" },
-];
-const nombresAnimales = [];
-const animals = [];
-for (let i = 0; i < animalData.length; i++) {
-    const animal = new Animal(
-        animalData[i].src,
-        animalData[i].name,
-        rand[i].x,
-        rand[i].y,
-        300,
-        200
-    );
-
-    nombreAnimal = new NombresAnimales('#EAF1D8', animal.name, animal.x, animal.y);
-    nombresAnimales.push(nombreAnimal);
-    animals.push(animal);
-}
-console.log(animals);
-console.log(nombresAnimales);
-//---------------------------------------------
-
+iniciarCronometro();
 setTimeout(function () {
-    exit.dibujarImg();
-    for (let i = 0; i < animals.length; i++) {
-        animals[i].draw();
-        nombresAnimales[i].Cuadro();
-        console.log(i)
-        nombresAnimales[i].CuadroTexto(180 * (i + 1), 10,)
+    detenerCronometro();
+}, 60000);
+var contadordeanimales = 0;
+
+localStorage.setItem("score", 0);
+actualizarScore(50);
+var screenWidth = window.innerWidth;
+
+// Verificar si hay un valor de zoom establecido en el elemento body
+var currentZoom = document.body.style.zoom;
+if (currentZoom === "") {
+    // Si no hay un valor de zoom establecido, establecer el zoom en función del ancho de la pantalla
+    if (screenWidth > 1200) {
+        // Pantallas grandes: 100% de zoom
+        document.body.style.zoom = "100%";
+    } else if (screenWidth > 768) {
+        // Pantallas medianas: 80% de zoom
+        document.body.style.zoom = "80%";
+    } else {
+        // Pantallas pequeñas: 60% de zoom
+        document.body.style.zoom = "60%";
     }
-
-    exit.botonPresionado('../media/sounds/hasta_luegor.mp3', '../')
-
-
-}, 500);
-
+}
 
 function randomPosition() {
     const positions = [
@@ -302,6 +41,7 @@ function randomPosition() {
     const randomPositions = [];
     const takenIndexes = [];
 
+
     for (let i = 0; i < 6; i++) {
         let randomIndex;
         do {
@@ -311,15 +51,276 @@ function randomPosition() {
         randomPositions.push(positions[randomIndex]);
     }
 
+
     return randomPositions;
 }
 
 function random(max) {
     return Math.floor(Math.random() * max);
+
 }
+var cronometro = document.getElementById("cronometro");
+var milisegundos = 0;
+var intervalo = 0;
+
+
+function random(max) {
+    return Math.floor(Math.random() * max);
+}
+
+var cronometro = document.getElementById("cronometro");
+var milisegundos = 0;
+var intervalo = 0;
+
+function iniciarCronometro() {
+    intervalo = setInterval(actualizarCronometro, 10);
+}
+
+function detenerCronometro() {
+    clearInterval(intervalo);
+    window.location.replace('../valida.html');//la ruta queda pendiente
+}
+
+function actualizarCronometro() {
+    milisegundos += 10;
+    let date = new Date(milisegundos);
+    cronometro.innerHTML =
+        date.getUTCSeconds().toString().padStart(2, "0") + "." +
+        date.getUTCMilliseconds().toString().padStart(3, "0");
+
+    localStorage.setItem('Time', parseInt(milisegundos / 1000));
+
+}
+function actualizarScore(score) {
+    let usersJSON = localStorage.getItem('usuarios');
+    let alias = localStorage.getItem('alias');
+    usersJSON = JSON.parse(usersJSON);
+    for (const user of usersJSON) {
+        if (user.alias === alias) {
+            if (user.score < score) {
+                user.score = score;
+                localStorage.setItem('usuarios', JSON.stringify(usersJSON));
+                break;
+            }
+            break;
+        }
+    }
+    var mScore;
+    mScore= document.getElementById('score');
+    mScore.innerHTML = score;
+
+}
+
+const persona = new User;
+
+const play = new Fondo("../media/assets/Pantalla-principal/fondo-principal.png", 0, 0, 3840 / 3, 2160 / 3, "game");
+const exit = new Botones('', 60, 50, 300, 150, "../media/assets/Pantalla-principal/exit.png")
+exit.time = 0;
+const ready = new Botones('', 1200, 45, 100, 75, "../media/assets/Pantalla-alias/aceptar.png")
+//
+// hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
+// hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
+// hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
+// hay que tener cuidado de que se cargue primero el fondo antes que cualquier cosa porque de lo contrario se manda al fondo el resto de elenentos
+play.dibujaFondo();
+rand = randomPosition();
+//ctx.globalCompositeOperation = 'destination-out';
+
+const animalData = [
+    { src: "../media/img/Leon.png", name: "Leon", sound: '../media/sounds/sonido-leon.mp3' },
+    { src: "../media/assets/Pantalla-principal/chango.png", name: "Mono", sound: '../media/sounds/sonido-mono.mp3' },
+    { src: "../media/assets/Pantalla-principal/elefante.png", name: "Elefante", sound: '../media/sounds/sonido-elefante.mp3' },
+    { src: "../media/assets/Pantalla-principal/zebra.png", name: "Zebra", sound: '../media/sounds/sonido-cebra.mp3' },
+    { src: "../media/assets/Pantalla-principal/hipopotamo.png", name: "hipopotamo", sound: '../media/sounds/sonido-hipo.mp3' },
+    { src: "../media/img/hiena.png", name: "Hiena", sound: '../media/sounds/sonido-hiena.mp3' },
+];
+
+
+
+
+const Animales = [];
+const nombresAnimales = [];
+const animals = [];
+for (let i = 0; i < animalData.length; i++) {
+    const animal = new Animal(
+        animalData[i].src,
+        animalData[i].name,
+        rand[i].x,
+        rand[i].y,
+        300,
+        200,
+        animalData[i].sound
+    );
+    let animales = new NombresAnimales('#EAF1D8', animalData[i].name, animal.x + 60, animal.y - 60);
+    let NombreAnimales = new NombresAnimales('#EAF1D8', animalData[i].name, 160 * (i + 1), 10);
+    Animales.push(animales);
+    nombresAnimales.push(NombreAnimales);
+    animals.push(animal);
+}
+
+//---------------------------------------------
+
+setTimeout(function () {
+    exit.dibujarImg();
+
+    for (let i = 0; i < 6; i++) {
+        window.addEventListener('load', function () {
+            animals[i].draw();
+            Animales[i].Cuadro();
+        }); nombresAnimales[i].CuadroTexto()
+
+    }
+
+
+    exit.botonPresionado('../media/sounds/hasta_luego.mp3', '../index.html');
+
+}, 600);
+
+function termino() {
+    if (contadordeanimales === 6) {
+        ready.dibujarImg();
+        ready.botonPresionado('../media/sounds/Como_te_fue.mp3', '../valida.html');
+    }
+}
+
+//let shape =  nombresAnimales;
+
+let current_shape_index = null;
+let is_dragging = false;
+let startX, startY;
+
+const is_mouse_in_shape = (x, y, shape) => x > shape.x && x < shape.x + shape.width && y > shape.y && y < shape.y + shape.height;
+
+canvas.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+
+    const offset_x = canvas.getBoundingClientRect().left;
+    const offset_y = canvas.getBoundingClientRect().top;
+    startX = parseInt(event.clientX - offset_x);
+    startY = parseInt(event.clientY - offset_y);
+    let index = 0;
+    for (let shape of nombresAnimales) {
+        if (is_mouse_in_shape(startX, startY, shape)) {
+            current_shape_index = index;
+            is_dragging = true;
+
+        }
+        index++;
+
+    }
+});
+
+canvas.addEventListener('mouseup', (event) => {
+    if (!is_dragging) {
+        return;
+    }
+    event.preventDefault();
+    let score = parseInt(localStorage.getItem('score'))
+    if (is_mouse_in_shape(startX, startY + 60, animals[current_shape_index])) {
+        console.log(true)
+        //establecemos un valor predeterminado
+        nombresAnimales[current_shape_index].x = Animales[current_shape_index].x;
+        nombresAnimales[current_shape_index].y = Animales[current_shape_index].y;
+        //lo dibuja y aumenta puntos
+        draw_nombresAnimales();
+        score += 50;
+        localStorage.setItem('score', score);
+        animals[current_shape_index].audio();
+        //si el contador llega a 6 se muestra un boton para terminar
+        contadordeanimales += 1;
+        termino();
+    }
+    for (var i = 0; i < 6; i++) {
+        if (i != current_shape_index) {// revisa si es el animal correcto
+            if (is_mouse_in_shape(startX, startY, animals[i])) {
+                console.log(false);
+                nombresAnimales[current_shape_index].x = 160 * (current_shape_index + 1)
+                nombresAnimales[current_shape_index].y = 10;
+                draw_nombresAnimales();
+                //resta 20 puntos al score no acptamos valores negativos
+                score -= 20;
+                if (score < 0) {
+                    score = 0;
+
+                }
+                localStorage.setItem('score', score);
+                ///y se reproduce el audo 
+                var audio = new Audio('../media/sounds/Pou-No.mp3');
+                audio.play();
+                break;
+            }
+        }
+    }
+    actualizarScore(score);
+
+    is_dragging = false;
+    console.log(score);
+});
+
+canvas.addEventListener('mouseout', (event) => {
+    if (!is_dragging) {
+        return;
+    }
+    event.preventDefault();
+    is_dragging = false;
+});
+
+canvas.addEventListener('mousemove', (event) => {
+    if (!is_dragging) {
+        return;
+    }
+
+    event.preventDefault();
+
+
+    const offset_x = canvas.getBoundingClientRect().left;
+    const offset_y = canvas.getBoundingClientRect().top;
+    //console.log(offset_x + "\n" + offset_x)
+    const mouseX = parseInt(event.clientX - offset_x);
+    const mouseY = parseInt(event.clientY - offset_y);
+    const dx = mouseX - startX;
+    const dy = mouseY - startY;
+    const current_shape = nombresAnimales[current_shape_index];
+    current_shape.x += dx;
+    current_shape.y += dy;
+    draw_nombresAnimales();
+
+    startX = mouseX;
+    startY = mouseY;
+
+});
+
+const draw_nombresAnimales = () => {
+    // Dibujar el fondo
+    play.dibujaFondo();
+
+    // Dibujar los objetos (excepto los nombres de los animales)
+    setTimeout(function () {
+        exit.dibujarImg();
+        for (let i = 0; i < 6; i++) {
+
+            animals[i].draw();
+            Animales[i].Cuadro();
+        }
+        setTimeout(function () {
+            // Dibujar los nombres de los animales y borrar los nombres antiguos
+            for (let shape of nombresAnimales) {
+                // Borrar el rectángulo alrededor del nombre del animal
+                ctx.clearRect(shape.xT, shape.yT, shape.width, shape.height);
+
+                // Dibujar el nombre del animal actualizado
+                shape.CuadroTexto();
+            }
+        })
+
+
+    }, 150);
+}
+
+
+
+draw_nombresAnimales();
 
 //const orderedPositions = randomPosition();
 //console.log(orderedPositions);
-
-
 

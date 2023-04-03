@@ -13,28 +13,32 @@
     </head>
     <body>
         <header class="TOTAL">
+
             <div class="header center-logo">
-                <div id="logo">
-                    <img src="media/img/UAAGAMES.png" class="img-logo"
-                        alt="Logo" style="width: 100px; height: auto;">
-                </div>
+                
+                <a href="index.html"><div id="logo">
+                    <img src="media/img/UAAGAMES.png" class="img-logo" alt="Logo">
+                </div></a>
 
                 <li>
                     <ul>
-                        <a href="#" class="btn-Menu">Juego</a>
+                        <a href="index.html" class="btn-Menu">Juego</a>
+
                     </ul>
                     <ul>
-                        <a href="#" class="btn-Menu">Creditos</a>
+                        <a href="creditos.html" class="btn-Menu">Creditos</a>
                     </ul>
                     <ul>
-                        <a href="#" class="btn-Menu">High Score</a>
+                        <a href="Score.html" class="btn-Menu">High Score</a>
                     </ul>
                 </li>
+                <div id="score"></div>
+                <div id="cronometro">0:00</div> 
                 <div class="music">
-                    <!--<audio id="miAudio"
+                    <audio id="miAudio"
                         src="media/sounds/spring-upbeat-133219.mp3"
                         autoplay="autoplay"
-                        loop="loop"></audio>-->
+                        loop="loop"></audio>
                     <h3>🔊</h3>
 
                     <input type="range" id="volumen" min="0" max="1" step="0.1"
@@ -47,10 +51,12 @@
         <section class="TOTAL">
             <div class="sec">
                 <canvas id="game"></canvas>
-                <div id="imgs"></div>
+                
             </div>
         </section>
     </body>
+    <script src="js/clases.js"></script>
     <script src="js/game.js"></script>
+
 
 </html>
