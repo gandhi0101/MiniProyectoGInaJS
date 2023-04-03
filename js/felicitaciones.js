@@ -20,7 +20,7 @@ setTimeout(function () {
     letreroWin.dibujarImg();
     mostrarGanador(200, 330);
     exit.dibujarImg();
-}, 250);
+}, 300);
 
 
 

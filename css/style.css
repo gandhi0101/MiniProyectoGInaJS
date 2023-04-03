@@ -348,3 +348,45 @@ body {
   /* Firefox */
 
 }
+
+
+
+#score {
+  margin-left: 30px;
+  color: #ff0000; /* rojo brillante */
+}
+#score {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+#score {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+#score {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+#score {
+  font-size: 48px;
+}
+#score {
+  border: 3px solid #ff0000;
+  border-radius: 10px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { border-color: #ff0000; }
+  50% { border-color: #ffff00; }
+  100% { border-color: #ff0000; }
+}

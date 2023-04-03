@@ -78,14 +78,13 @@ function iniciarCronometro() {
 
 function detenerCronometro() {
     clearInterval(intervalo);
-    window.location.replace('../Score.html');//la ruta queda pendiente
+    window.location.replace('../valida.html');//la ruta queda pendiente
 }
 
 function actualizarCronometro() {
     milisegundos += 10;
     let date = new Date(milisegundos);
-    cronometro.innerHTML = date.getUTCHours().toString().padStart(2, "0") + ":" +
-        date.getUTCMinutes().toString().padStart(2, "0") + ":" +
+    cronometro.innerHTML =
         date.getUTCSeconds().toString().padStart(2, "0") + "." +
         date.getUTCMilliseconds().toString().padStart(3, "0");
 
@@ -106,6 +105,10 @@ function actualizarScore(score) {
             break;
         }
     }
+    var mScore;
+    mScore= document.getElementById('score');
+    mScore.innerHTML = score;
+
 }
 
 const persona = new User;
@@ -159,7 +162,7 @@ for (let i = 0; i < animalData.length; i++) {
 
 setTimeout(function () {
     exit.dibujarImg();
-    
+
     for (let i = 0; i < 6; i++) {
         window.addEventListener('load', function () {
             animals[i].draw();
@@ -173,8 +176,8 @@ setTimeout(function () {
 
 }, 600);
 
-function termino(){
-    if(contadordeanimales === 6){
+function termino() {
+    if (contadordeanimales === 6) {
         ready.dibujarImg();
         ready.botonPresionado('../media/sounds/Como_te_fue.mp3', '../valida.html');
     }
@@ -224,7 +227,7 @@ canvas.addEventListener('mouseup', (event) => {
         localStorage.setItem('score', score);
         animals[current_shape_index].audio();
         //si el contador llega a 6 se muestra un boton para terminar
-        contadordeanimales+=1;
+        contadordeanimales += 1;
         termino();
     }
     for (var i = 0; i < 6; i++) {
@@ -249,6 +252,7 @@ canvas.addEventListener('mouseup', (event) => {
         }
     }
     actualizarScore(score);
+
     is_dragging = false;
     console.log(score);
 });
@@ -294,7 +298,7 @@ const draw_nombresAnimales = () => {
     setTimeout(function () {
         exit.dibujarImg();
         for (let i = 0; i < 6; i++) {
-            
+
             animals[i].draw();
             Animales[i].Cuadro();
         }
@@ -312,9 +316,9 @@ const draw_nombresAnimales = () => {
 
     }, 150);
 }
-    
 
-    
+
+
 draw_nombresAnimales();
 
 //const orderedPositions = randomPosition();
